@@ -3,49 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ceylon Heritage - Historical Sites of Sri Lanka</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Lanka Heritage | Historical Sites of Sri Lanka</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <span class="logo-icon">🪷</span>
-                <span class="logo-text">CeylonHeritage</span>
-            </a>
-
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-links">Home</a></li>
-                <li class="nav-item"><a href="#sites" class="nav-links">Sites</a></li>
-                <li class="nav-item"><a href="#map" class="nav-links">Map</a></li>
-                <li class="nav-item"><a href="#gallery" class="nav-links">Gallery</a></li>
-                <li class="nav-item"><a href="#timeline" class="nav-links">Timeline</a></li>
-                <li class="nav-item"><a href="#blog" class="nav-links">Blog</a></li>
-                <li class="nav-item"><a href="#about" class="nav-links">About</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-links">Contact</a></li>
+    <header class="navbar">
+        <nav class="container">
+            <div class="logo">Lanka<span>Heritage</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                        <span class="moon-icon">🌙</span>
+                    </button>
+                </li>
             </ul>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Discover the Ancient Wonders</h1>
-            <p>Journey through the rich history of Sri Lanka's sacred cities and majestic ruins.</p>
-            <a href="#sites" class="btn">Explore Now</a>
-        </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
     </header>
 
-    <script src="script.js"></script>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content container">
+                <span class="hero-subtitle">Experience the Pearl of the Indian Ocean</span>
+                <h1>Discover Ancient Wonders</h1>
+                <p>Journey through 2,500 years of history, from majestic rock fortresses to sacred ancient cities.</p>
+                <a href="#destinations" class="btn">Start Your Journey</a>
+            </div>
+        </section>
+
+        <section id="about" class="intro">
+            <div class="container">
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <span class="section-tag">History</span>
+                        <h2>Our Storied Past</h2>
+                        <p>Sri Lanka is home to eight UNESCO World Heritage Sites, each telling a unique story of royalty, spirituality, and architectural brilliance. Our mission is to preserve and share these cultural treasures with the world.</p>
+                    </div>
+                    <div class="intro-stats">
+                        <div class="stat-item">
+                            <h3>2500+</h3>
+                            <p>Years of History</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>8</h3>
+                            <p>UNESCO Sites</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="destinations" class="destinations">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Explore</span>
+                    <h2>Featured Destinations</h2>
+                </div>
+                <div class="grid">
+                    <!-- Sigiriya -->
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1588598116719-78c57bc1d1e1?auto=format&fit=crop&q=80&w=1200');"></div>
+                        <div class="card-content">
+                            <h3>Sigiriya Rock Fortress</h3>
+                            <p>An architectural marvel of the 5th century, featuring world-famous frescoes and the massive Lion Gate.</p>
+                            <a href="#" class="read-more">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Anuradhapura -->
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1590059530432-84386e886971?auto=format&fit=crop&q=80&w=1200');"></div>
+                        <div class="card-content">
+                            <h3>Sacred Anuradhapura</h3>
+                            <p>The first capital of ancient Sri Lanka, home to towering stupas and the oldest documented tree in the world.</p>
+                            <a href="#" class="read-more">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Polonnaruwa -->
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1644315270222-1d5964147748?auto=format&fit=crop&q=80&w=1200');"></div>
+                        <div class="card-content">
+                            <h3>Ancient Polonnaruwa</h3>
+                            <p>The second medieval capital, known for its well-preserved ruins of the Royal Palace and Gal Vihara.</p>
+                            <a href="#" class="read-more">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Galle Fort -->
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544450181-11af5097f1ee?auto=format&fit=crop&q=80&w=1200');"></div>
+                        <div class="card-content">
+                            <h3>Galle Dutch Fort</h3>
+                            <p>A living heritage site where 16th-century European architecture meets tropical South Asian traditions.</p>
+                            <a href="#" class="read-more">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Jaffna Fort -->
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1621257929497-69502758f121?auto=format&fit=crop&q=80&w=1200');"></div>
+                        <div class="card-content">
+                            <h3>Jaffna Fort</h3>
+                            <p>A star-shaped colonial fortress in the North, built by the Portuguese and expanded by the Dutch.</p>
+                            <a href="#" class="read-more">Learn More &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-box">
+                    <h2>Plan Your Visit</h2>
+                    <p>Interested in exploring these historical sites? Get in touch with us for travel guides and cultural tips.</p>
+                    <a href="mailto:info@lankaheritage.com" class="btn btn-outline">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Lanka<span>Heritage</span></div>
+                    <p>Preserving the legacy of our ancestors.</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Lanka Heritage. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
