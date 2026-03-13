@@ -87,4 +87,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Contact Form Submission (Offline Mock)
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const status = document.getElementById('form-status');
+            
+            // Simulate processing
+            status.style.display = 'block';
+            status.textContent = 'Sending message...';
+            status.className = 'form-status';
+
+            setTimeout(() => {
+                status.textContent = 'Thank you! Your message has been sent successfully (Offline Mode).';
+                status.classList.add('success');
+                contactForm.reset();
+
+                // Clear status after 5 seconds
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+    }
 });
