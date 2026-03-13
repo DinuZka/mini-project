@@ -1,0 +1,1359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Historical Sites of Sri Lanka</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Crimson+Pro:wght@200;300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --stone: #c8a96e;
+        --deep: #1a1208;
+        --parchment: #f5ede0;
+        --rust: #8b3a1e;
+        --gold: #d4a843;
+        --ivory: #fdf8f0;
+        --smoke: #6b5d4f;
+        --crimson: #8b1a1a;
+        --saffron: #e8a020;
+        --night: #0e0705;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Crimson Pro", serif;
+        background-color: var(--parchment);
+        color: var(--deep);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Fixed Navigation (Matching index.html) */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 5%;
+        background: rgba(26, 18, 8, 0.93);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+      }
+
+      .logo {
+        font-family: "Cinzel", serif;
+        color: var(--gold);
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        font-family: "Cinzel", serif;
+        font-variant: small-caps;
+        color: var(--ivory);
+        text-decoration: none;
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+        transition: color 0.3s ease;
+        padding-bottom: 4px;
+      }
+
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+
+      .nav-links a.active {
+        color: var(--gold);
+        border-bottom: 1px solid var(--gold);
+      }
+
+      /* Section Styles (Matching index.html) */
+      .section-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--rust);
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      .divider {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(to right, var(--gold), var(--stone));
+        margin: 1.5rem 0 2.5rem;
+      }
+
+      /* Reveal Animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      img {
+        filter: sepia(12%) saturate(88%);
+      }
+
+      /* Hero Banner */
+      .hero {
+        height: 55vh;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 60px;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Gal_Vihara_Polonnaruwa.jpg/1280px-Gal_Vihara_Polonnaruwa.jpg")
+          center/cover no-repeat;
+        animation: slowZoom 18s infinite alternate ease-in-out;
+        z-index: 1;
+      }
+
+      @keyframes slowZoom {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.06);
+        }
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(26, 18, 8, 0.5),
+          rgba(26, 18, 8, 0.85)
+        );
+        z-index: 2;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        padding: 0 2rem;
+        max-width: 900px;
+      }
+
+      .eyebrow-pill {
+        display: inline-block;
+        border: 1px solid rgba(212, 168, 67, 0.4);
+        background: rgba(212, 168, 67, 0.08);
+        font-family: "Cinzel", serif;
+        font-size: 0.68rem;
+        letter-spacing: 0.35em;
+        color: var(--gold);
+        padding: 0.5rem 1.2rem;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 300;
+        font-size: clamp(3rem, 7vw, 6rem);
+        line-height: 0.95;
+        color: var(--ivory);
+      }
+
+      .hero h1 span {
+        display: block;
+        font-style: italic;
+        color: var(--stone);
+      }
+
+      .hero-subtitle {
+        font-size: 1.15rem;
+        font-weight: 300;
+        color: var(--parchment);
+        opacity: 0.8;
+        max-width: 500px;
+        margin: 1.5rem auto 0;
+        line-height: 1.75;
+      }
+
+      /* Sticky Filter Bar */
+      .filter-bar-wrapper {
+        position: sticky;
+        top: 60px;
+        z-index: 90;
+        background: var(--deep);
+        padding: 1.2rem 5%;
+        border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+      }
+
+      .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .filter-btn {
+        background: transparent;
+        border: 1px solid rgba(212, 168, 67, 0.3);
+        color: var(--stone);
+        font-family: "Cinzel", serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 0.55rem 1.4rem;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      .filter-btn:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+      }
+
+      .filter-btn.active {
+        background: var(--gold);
+        color: var(--night);
+        border-color: var(--gold);
+        font-weight: 700;
+      }
+
+      .filter-count {
+        font-size: 0.6rem;
+        opacity: 0.75;
+        margin-left: 0.3rem;
+      }
+
+      .results-count {
+        text-align: center;
+        font-family: "Cinzel", serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        color: var(--gold);
+        margin-top: 0.5rem;
+      }
+
+      /* Gallery Grid */
+      .gallery-container {
+        padding: 4rem 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.2rem;
+      }
+
+      .gallery-card {
+        background: white;
+        overflow: hidden;
+        cursor: pointer;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .gallery-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(26, 18, 8, 0.15);
+      }
+
+      .card-img-wrap {
+        position: relative;
+        overflow: hidden;
+        height: 220px;
+      }
+
+      .card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-card:hover .card-img-wrap img {
+        transform: scale(1.06);
+      }
+
+      .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(26, 18, 8, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .gallery-card:hover .card-overlay {
+        opacity: 1;
+      }
+
+      .overlay-icon {
+        font-size: 2.5rem;
+        color: var(--gold);
+        line-height: 1;
+      }
+
+      .card-info {
+        padding: 1rem 1.2rem 1.3rem;
+      }
+
+      .card-category {
+        display: block;
+        font-family: "Cinzel", serif;
+        font-size: 0.58rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--rust);
+        margin-bottom: 0.3rem;
+      }
+
+      .card-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--deep);
+        line-height: 1.3;
+        margin-bottom: 0.3rem;
+      }
+
+      .card-location {
+        font-size: 0.9rem;
+        color: var(--smoke);
+      }
+
+      /* Lightbox (Matching deep theme) */
+      #lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      #lightbox.lb-open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .lb-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(14, 7, 5, 0.96);
+        cursor: pointer;
+      }
+
+      .lb-content {
+        position: relative;
+        z-index: 1;
+        width: min(900px, 92vw);
+        display: flex;
+        flex-direction: column;
+        max-height: 92vh;
+      }
+
+      #lightbox.lb-open .lb-content {
+        animation: lbSlideUp 0.35s ease;
+      }
+
+      @keyframes lbSlideUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: none;
+          opacity: 1;
+        }
+      }
+
+      .lb-img-wrap {
+        position: relative;
+        overflow: hidden;
+        background: var(--deep);
+        flex-shrink: 0;
+      }
+
+      #lb-img {
+        width: 100%;
+        max-height: 62vh;
+        object-fit: contain;
+        display: block;
+        filter: sepia(8%) saturate(90%);
+      }
+
+      .lb-loader {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+        font-family: "Cinzel", serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        background: var(--deep);
+        transition: opacity 0.3s;
+      }
+
+      .lb-close {
+        position: absolute;
+        top: -2.8rem;
+        right: 0;
+        background: none;
+        border: none;
+        color: var(--gold);
+        font-size: 1.6rem;
+        cursor: pointer;
+        font-family: "Cinzel", serif;
+        transition: color 0.2s;
+      }
+      .lb-close:hover {
+        color: var(--ivory);
+      }
+
+      .lb-prev,
+      .lb-next {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        background: rgba(26, 18, 8, 0.8);
+        border: 1px solid rgba(212, 168, 67, 0.35);
+        color: var(--gold);
+        font-size: 2.2rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        transition: all 0.2s;
+      }
+      .lb-prev:hover,
+      .lb-next:hover {
+        border-color: var(--gold);
+        background: var(--night);
+      }
+      .lb-prev {
+        left: -4.5rem;
+      }
+      .lb-next {
+        right: -4.5rem;
+      }
+
+      .lb-info {
+        background: var(--deep);
+        padding: 1.5rem 2rem;
+        border-top: 2px solid rgba(212, 168, 67, 0.2);
+        flex-shrink: 0;
+      }
+
+      .lb-cat {
+        font-family: "Cinzel", serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+
+      .lb-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.9rem;
+        font-weight: 300;
+        color: var(--ivory);
+        margin-bottom: 0.5rem;
+      }
+
+      .lb-desc {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: rgba(245, 237, 224, 0.68);
+        margin-bottom: 0.75rem;
+      }
+
+      .lb-loc {
+        font-family: "Cinzel", serif;
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        color: var(--stone);
+      }
+
+      /* Footer (Matching index.html) */
+      footer {
+        background-color: var(--night);
+        color: var(--parchment);
+        padding: 5rem 10% 2rem;
+      }
+
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-logo {
+        font-family: "Cinzel", serif;
+        color: var(--gold);
+        font-size: 1.5rem;
+        text-decoration: none;
+      }
+
+      .footer-nav {
+        display: flex;
+        gap: 2.5rem;
+      }
+
+      .footer-nav a {
+        color: var(--ivory);
+        text-decoration: none;
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        transition: color 0.3s ease;
+      }
+
+      .footer-nav a:hover {
+        color: var(--gold);
+      }
+
+      .footer-tagline {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: var(--stone);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+        color: var(--smoke);
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+        .lb-prev {
+          left: 0.5rem;
+          z-index: 3;
+        }
+        .lb-next {
+          right: 0.5rem;
+          z-index: 3;
+        }
+        .footer-top {
+          flex-direction: column;
+          gap: 2rem;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .nav-links {
+          display: none;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+        .filter-bar-wrapper {
+          padding: 1rem 1.5rem;
+        }
+        .filter-btn {
+          font-size: 0.58rem;
+          padding: 0.45rem 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar (Matching index.html) -->
+    <nav class="navbar">
+      <a href="index.html" class="logo">LANKA HERITAGE</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="gallery.html" class="active">Gallery</a>
+        <a href="blog.html">Blog</a>
+        <a href="ancient-cities.html">Ancient Cities</a>
+        <a href="kandy.html">Kandy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <span class="eyebrow-pill">Visual Archive · Sri Lanka</span>
+        <h1>Gallery of <span>Ancient Lanka</span></h1>
+        <p class="hero-subtitle">
+          A curated collection of Sri Lanka's most treasured historical
+          monuments, sacred temples, and ancient cities.
+        </p>
+      </div>
+    </header>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar-wrapper">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">
+          All Sites <span class="filter-count"></span>
+        </button>
+        <button class="filter-btn" data-filter="Anuradhapura">
+          Anuradhapura <span class="filter-count"></span>
+        </button>
+        <button class="filter-btn" data-filter="Polonnaruwa">
+          Polonnaruwa <span class="filter-count"></span>
+        </button>
+        <button class="filter-btn" data-filter="Kandy">
+          Kandy <span class="filter-count"></span>
+        </button>
+        <button class="filter-btn" data-filter="Colonial">
+          Colonial <span class="filter-count"></span>
+        </button>
+        <button class="filter-btn" data-filter="Nature & Gardens">
+          Nature & Gardens <span class="filter-count"></span>
+        </button>
+      </div>
+      <div class="results-count" id="results-count-text">
+        Showing 20 of 20 sites
+      </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <main class="gallery-container">
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- ANURADHAPURA -->
+        <div
+          class="gallery-card reveal"
+          data-category="Anuradhapura"
+          data-title="Ruwanwelisaya Stupa"
+          data-location="Anuradhapura, North Central Province"
+          data-description="One of the greatest stupas of the ancient world, built by King Dutugamunu in 140 BC. This 103-metre white dome remains a major pilgrimage destination for Buddhists worldwide."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Ruwanwelisaya.jpg/1280px-Ruwanwelisaya.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Ruwanwelisaya.jpg/1280px-Ruwanwelisaya.jpg"
+              alt="Ruwanwelisaya Stupa"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Anuradhapura</span>
+            <h3 class="card-title">Ruwanwelisaya Stupa</h3>
+            <span class="card-location">📍 Anuradhapura</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Anuradhapura"
+          data-title="Sri Maha Bodhi"
+          data-location="Anuradhapura, North Central Province"
+          data-description="The oldest documented tree on Earth, planted in 288 BC from a cutting of the original Bodhi tree under which the Buddha attained enlightenment. Tended by an unbroken line of guardians."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/SL_Anuradhapura_asv2020-01_img01_Jaya_Sri_Maha_Bodhi.jpg/960px-SL_Anuradhapura_asv2020-01_img01_Jaya_Sri_Maha_Bodhi.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/SL_Anuradhapura_asv2020-01_img01_Jaya_Sri_Maha_Bodhi.jpg/960px-SL_Anuradhapura_asv2020-01_img01_Jaya_Sri_Maha_Bodhi.jpg"
+              alt="Sri Maha Bodhi"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Anuradhapura</span>
+            <h3 class="card-title">Sri Maha Bodhi</h3>
+            <span class="card-location">📍 Anuradhapura</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Anuradhapura"
+          data-title="Jetavanaramaya"
+          data-location="Anuradhapura, North Central Province"
+          data-description="Once the third tallest structure in the ancient world at over 120 metres. This enormous brick stupa was built by King Mahasena in the 3rd century AD and required millions of bricks."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Jetavanaramaya_Stupa_profile.jpg/500px-Jetavanaramaya_Stupa_profile.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Jetavanaramaya_Stupa_profile.jpg/500px-Jetavanaramaya_Stupa_profile.jpg"
+              alt="Jetavanaramaya"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Anuradhapura</span>
+            <h3 class="card-title">Jetavanaramaya</h3>
+            <span class="card-location">📍 Anuradhapura</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Anuradhapura"
+          data-title="Thuparamaya"
+          data-location="Anuradhapura, North Central Province"
+          data-description="The first stupa ever built in Sri Lanka, erected in the 3rd century BC by King Devanampiya Tissa to enshrine the collarbone relic of the Buddha brought from India."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/SL_Anuradhapura_asv2020-01_img34_Thuparamaya_Stupa.jpg/500px-SL_Anuradhapura_asv2020-01_img34_Thuparamaya_Stupa.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/SL_Anuradhapura_asv2020-01_img34_Thuparamaya_Stupa.jpg/500px-SL_Anuradhapura_asv2020-01_img34_Thuparamaya_Stupa.jpg"
+              alt="Thuparamaya"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Anuradhapura</span>
+            <h3 class="card-title">Thuparamaya</h3>
+            <span class="card-location">📍 Anuradhapura</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Anuradhapura"
+          data-title="Twin Ponds — Kuttam Pokuna"
+          data-location="Anuradhapura, North Central Province"
+          data-description="A masterpiece of ancient hydraulic engineering — two linked bathing pools built for monks featuring stone stairs, underground channels, and sophisticated filtration systems."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/SL_Anuradhapura_asv2020-01_img29_Kuttam_Pokuna.jpg/500px-SL_Anuradhapura_asv2020-01_img29_Kuttam_Pokuna.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/SL_Anuradhapura_asv2020-01_img29_Kuttam_Pokuna.jpg/500px-SL_Anuradhapura_asv2020-01_img29_Kuttam_Pokuna.jpg"
+              alt="Twin Ponds"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Anuradhapura</span>
+            <h3 class="card-title">Twin Ponds — Kuttam Pokuna</h3>
+            <span class="card-location">📍 Anuradhapura</span>
+          </div>
+        </div>
+
+        <!-- POLONNARUWA -->
+        <div
+          class="gallery-card reveal"
+          data-category="Polonnaruwa"
+          data-title="Gal Vihara"
+          data-location="Polonnaruwa, North Central Province"
+          data-description="Four magnificent rock-cut Buddha statues carved from a single granite face in the 12th century. The 15-metre reclining Buddha is the finest example of Sinhalese stone sculpture."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/%E0%B6%8B%E0%B6%AD%E0%B7%8A%E0%B6%AD%E0%B6%BB%E0%B7%8F%E0%B6%BB%E0%B7%8F%E0%B6%B8%E0%B6%BA_%E0%B6%9A%E0%B7%85%E0%B7%94_%E0%B6%9C%E0%B6%BD_%E0%B6%B1%E0%B7%99%E0%B6%BD%E0%B7%8F.jpg/500px-%E0%B6%8B%E0%B6%AD%E0%B7%8A%E0%B6%AD%E0%B6%BB%E0%B7%8F%E0%B6%BB%E0%B7%8F%E0%B6%B8%E0%B6%BA_%E0%B6%9A%E0%B7%85%E0%B7%94_%E0%B6%9C%E0%B6%BD_%E0%B6%B1%E0%B7%99%E0%B6%BD%E0%B7%8F.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/%E0%B6%8B%E0%B6%AD%E0%B7%8A%E0%B6%AD%E0%B6%BB%E0%B7%8F%E0%B6%BB%E0%B7%8F%E0%B6%B8%E0%B6%BA_%E0%B6%9A%E0%B7%85%E0%B7%94_%E0%B6%9C%E0%B6%BD_%E0%B6%B1%E0%B7%99%E0%B6%BD%E0%B7%8F.jpg/500px-%E0%B6%8B%E0%B6%AD%E0%B7%8A%E0%B6%AD%E0%B6%BB%E0%B7%8F%E0%B6%BB%E0%B7%8F%E0%B6%B8%E0%B6%BA_%E0%B6%9A%E0%B7%85%E0%B7%94_%E0%B6%9C%E0%B6%BD_%E0%B6%B1%E0%B7%99%E0%B6%BD%E0%B7%8F.jpg"
+              alt="Gal Vihara"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Polonnaruwa</span>
+            <h3 class="card-title">Gal Vihara</h3>
+            <span class="card-location">📍 Polonnaruwa</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Polonnaruwa"
+          data-title="Vatadage"
+          data-location="Polonnaruwa, North Central Province"
+          data-description="A perfectly circular relic house with four elaborately carved entrances and four seated Buddha statues at cardinal points. Considered the crown jewel of Polonnaruwa architecture."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Vatadage.jpg/500px-Vatadage.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Vatadage.jpg/500px-Vatadage.jpg"
+              alt="Vatadage"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Polonnaruwa</span>
+            <h3 class="card-title">Vatadage</h3>
+            <span class="card-location">📍 Polonnaruwa</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Polonnaruwa"
+          data-title="Lankatilaka Image House"
+          data-location="Polonnaruwa, North Central Province"
+          data-description="A towering brick shrine housing a headless Buddha image. Its walls rise 17 metres in a dramatic Gothic-like structure, demonstrating the height of mature Sinhalese architecture."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Lankathilaka_Vhihara_-_Le_temple.JPG/500px-Lankathilaka_Vhihara_-_Le_temple.JPG"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Lankathilaka_Vhihara_-_Le_temple.JPG/500px-Lankathilaka_Vhihara_-_Le_temple.JPG"
+              alt="Lankatilaka"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Polonnaruwa</span>
+            <h3 class="card-title">Lankatilaka Image House</h3>
+            <span class="card-location">📍 Polonnaruwa</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Polonnaruwa"
+          data-title="Parakrama Samudra"
+          data-location="Polonnaruwa, North Central Province"
+          data-description="The Sea of Parakrama — an ancient reservoir built by King Parakramabahu I covering 2,500 hectares. A feat of hydraulic engineering that still irrigates farmland today."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Polonnaruwa-panta.jpg/500px-Polonnaruwa-panta.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Polonnaruwa-panta.jpg/500px-Polonnaruwa-panta.jpg"
+              alt="Parakrama Samudra"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Polonnaruwa</span>
+            <h3 class="card-title">Parakrama Samudra</h3>
+            <span class="card-location">📍 Polonnaruwa</span>
+          </div>
+        </div>
+
+        <!-- KANDY -->
+        <div
+          class="gallery-card reveal"
+          data-category="Kandy"
+          data-title="Temple of the Sacred Tooth Relic"
+          data-location="Kandy, Central Province"
+          data-description="The most venerated Buddhist site in Sri Lanka, housing the left canine tooth of Gautama Buddha within seven nested golden caskets. A UNESCO World Heritage Site since 1988."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg/500px-SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg/500px-SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg"
+              alt="Temple of the Tooth"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Kandy</span>
+            <h3 class="card-title">Temple of the Sacred Tooth Relic</h3>
+            <span class="card-location">📍 Kandy</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Kandy"
+          data-title="Kandy Lake"
+          data-location="Kandy, Central Province"
+          data-description="The sacred Kiri Muhuda lake built by the last Kandyan king Sri Vikrama Rajasinha in 1807. Its still waters mirror the temple and surrounding hills in one of Asia's finest urban views."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Kandy_Lake_%289%29.jpg/500px-Kandy_Lake_%289%29.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Kandy_Lake_%289%29.jpg/500px-Kandy_Lake_%289%29.jpg"
+              alt="Kandy Lake"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Kandy</span>
+            <h3 class="card-title">Kandy Lake</h3>
+            <span class="card-location">📍 Kandy</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Kandy"
+          data-title="Bahirawakanda Buddha Statue"
+          data-location="Kandy, Central Province"
+          data-description="A 26-metre white seated Buddha statue overlooking the entire city of Kandy from a hilltop. Built in the 1970s and visible from across the entire Kandy valley."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Sri_Maha_Bodhi_Vihara_Statue.jpg/500px-Sri_Maha_Bodhi_Vihara_Statue.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Sri_Maha_Bodhi_Vihara_Statue.jpg/500px-Sri_Maha_Bodhi_Vihara_Statue.jpg"
+              alt="Bahirawakanda Buddha"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Kandy</span>
+            <h3 class="card-title">Bahirawakanda Buddha Statue</h3>
+            <span class="card-location">📍 Kandy</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Kandy"
+          data-title="Embekka Devalaya"
+          data-location="Kandy District, Central Province"
+          data-description="A 14th-century shrine famous for its extraordinarily intricate carved wooden pillars. Each pillar tells stories through figures of swans, wrestlers, soldiers, and mythical creatures."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/The_Shrine_of_Hindu_God_Murugan.jpg/500px-The_Shrine_of_Hindu_God_Murugan.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/The_Shrine_of_Hindu_God_Murugan.jpg/500px-The_Shrine_of_Hindu_God_Murugan.jpg"
+              alt="Embekka Devalaya"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Kandy</span>
+            <h3 class="card-title">Embekka Devalaya</h3>
+            <span class="card-location">📍 Kandy District</span>
+          </div>
+        </div>
+
+        <!-- COLONIAL -->
+        <div
+          class="gallery-card reveal"
+          data-category="Colonial"
+          data-title="Galle Fort"
+          data-location="Galle, Southern Province"
+          data-description="A UNESCO-listed fortified city built by the Portuguese in 1588 and reinforced by the Dutch. The most complete colonial fortification in Asia and a vibrant living heritage city."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Galle_Fort.jpg/500px-Galle_Fort.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Galle_Fort.jpg/500px-Galle_Fort.jpg"
+              alt="Galle Fort"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Colonial</span>
+            <h3 class="card-title">Galle Fort</h3>
+            <span class="card-location">📍 Galle</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Colonial"
+          data-title="Dutch Hospital — Colombo"
+          data-location="Colombo, Western Province"
+          data-description="One of the oldest colonial buildings in Sri Lanka, originally built by the Dutch East India Company in the 17th century and now restored as a heritage dining and shopping precinct."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Dutch_Hospital.jpg/500px-Dutch_Hospital.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Dutch_Hospital.jpg/500px-Dutch_Hospital.jpg"
+              alt="Dutch Hospital"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Colonial</span>
+            <h3 class="card-title">Dutch Hospital — Colombo</h3>
+            <span class="card-location">📍 Colombo</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Colonial"
+          data-title="Matara Star Fort"
+          data-location="Matara, Southern Province"
+          data-description="A well-preserved Dutch star fort built in 1763 on a small island in the Nilwala river. Its distinctive five-pointed design is one of the finest examples of Dutch military architecture."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Dutch_Star_Fort%2C_Matara_0691.jpg/500px-Dutch_Star_Fort%2C_Matara_0691.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Dutch_Star_Fort%2C_Matara_0691.jpg/500px-Dutch_Star_Fort%2C_Matara_0691.jpg"
+              alt="Matara Star Fort"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Colonial</span>
+            <h3 class="card-title">Matara Star Fort</h3>
+            <span class="card-location">📍 Matara</span>
+          </div>
+        </div>
+
+        <!-- NATURE & GARDENS -->
+        <div
+          class="gallery-card reveal"
+          data-category="Nature & Gardens"
+          data-title="Peradeniya Botanical Gardens"
+          data-location="Peradeniya, Kandy District"
+          data-description="Royal gardens covering 147 acres established in 1821 on the grounds of a Kandyan royal garden. Home to over 4,000 plant species including a giant Java fig tree over 200 years old."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Botanical_Garden_of_Peradeniya_03.jpg/500px-Botanical_Garden_of_Peradeniya_03.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Botanical_Garden_of_Peradeniya_03.jpg/500px-Botanical_Garden_of_Peradeniya_03.jpg"
+              alt="Peradeniya Gardens"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Nature & Gardens</span>
+            <h3 class="card-title">Peradeniya Botanical Gardens</h3>
+            <span class="card-location">📍 Peradeniya, Kandy</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Nature & Gardens"
+          data-title="Sigiriya Rock Fortress"
+          data-location="Matale District, Central Province"
+          data-description="A UNESCO site rising 200 metres above the central plains. Built by King Kashyapa in 477 AD, its famous frescoes, mirror wall and water gardens are without parallel in Asia."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sigiriya_%28141688197%29.jpeg/500px-Sigiriya_%28141688197%29.jpeg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sigiriya_%28141688197%29.jpeg/500px-Sigiriya_%28141688197%29.jpeg"
+              alt="Sigiriya"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Nature & Gardens</span>
+            <h3 class="card-title">Sigiriya Rock Fortress</h3>
+            <span class="card-location">📍 Matale District</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Nature & Gardens"
+          data-title="Dambulla Cave Temple"
+          data-location="Dambulla, Central Province"
+          data-description="The largest and best-preserved cave temple complex in Sri Lanka. Its five caves contain 153 Buddha statues and murals covering over 2,100 square metres of ceiling and walls."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Dambulla-buddhastupa.jpg/500px-Dambulla-buddhastupa.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Dambulla-buddhastupa.jpg/500px-Dambulla-buddhastupa.jpg"
+              alt="Dambulla"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Nature & Gardens</span>
+            <h3 class="card-title">Dambulla Cave Temple</h3>
+            <span class="card-location">📍 Dambulla</span>
+          </div>
+        </div>
+
+        <div
+          class="gallery-card reveal"
+          data-category="Nature & Gardens"
+          data-title="Minneriya National Park"
+          data-location="North Central Province"
+          data-description="Home to The Gathering — one of Asia's greatest wildlife spectacles where over 300 wild elephants converge at the ancient Minneriya tank between June and October each year."
+          data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Birds_at_the_Minneriya-Giritale_National_Park.jpg/500px-Birds_at_the_Minneriya-Giritale_National_Park.jpg"
+        >
+          <div class="card-img-wrap">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Birds_at_the_Minneriya-Giritale_National_Park.jpg/500px-Birds_at_the_Minneriya-Giritale_National_Park.jpg"
+              alt="Minneriya"
+              loading="lazy"
+            />
+            <div class="card-overlay"><span class="overlay-icon">⊕</span></div>
+          </div>
+          <div class="card-info">
+            <span class="card-category">Nature & Gardens</span>
+            <h3 class="card-title">Minneriya National Park</h3>
+            <span class="card-location">📍 North Central Province</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-hidden">
+      <div class="lb-backdrop"></div>
+      <div class="lb-content">
+        <button class="lb-close" aria-label="Close">✕</button>
+        <button class="lb-prev" aria-label="Previous">&#8249;</button>
+        <button class="lb-next" aria-label="Next">&#8250;</button>
+        <div class="lb-img-wrap">
+          <img id="lb-img" src="" alt="" />
+          <div class="lb-loader">Loading...</div>
+        </div>
+        <div class="lb-info">
+          <span class="lb-cat"></span>
+          <h2 class="lb-title"></h2>
+          <p class="lb-desc"></p>
+          <span class="lb-loc">📍 <span class="lb-loc-text"></span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer (Matching index.html) -->
+    <footer>
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo">LANKA HERITAGE</a>
+        <div class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="blog.html">Blog</a>
+          <a href="ancient-cities.html">Ancient Cities</a>
+          <a href="kandy.html">Kandy</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <span class="footer-tagline">Preserving the echoes of the past.</span>
+      </div>
+      <div class="footer-bottom">
+        <p>Historical Sites of Sri Lanka — Group Mini Project</p>
+        <p>&copy; 2026 University Group. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // --- Scroll Reveal ---
+      const reveals = document.querySelectorAll(".reveal");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add("visible"), i * 80);
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+      reveals.forEach((r) => io.observe(r));
+
+      // --- Filtering Logic ---
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll(".gallery-card");
+      const resultsText = document.getElementById("results-count-text");
+      let visibleCards = Array.from(cards);
+
+      function updateFilterCounts() {
+        filterBtns.forEach((btn) => {
+          const category = btn.dataset.filter;
+          const countSpan = btn.querySelector(".filter-count");
+          if (category === "all") {
+            countSpan.textContent = `(${cards.length})`;
+          } else {
+            const count = Array.from(cards).filter(
+              (c) => c.dataset.category === category,
+            ).length;
+            countSpan.textContent = `(${count})`;
+          }
+        });
+      }
+
+      function filterGallery(filter) {
+        let count = 0;
+        cards.forEach((card) => {
+          if (filter === "all" || card.dataset.category === filter) {
+            card.style.display = "block";
+            card.style.opacity = "1";
+            card.style.transform = "scale(1)";
+            card.style.pointerEvents = "auto";
+            count++;
+          } else {
+            card.style.display = "none";
+            card.style.opacity = "0";
+            card.style.transform = "scale(0.95)";
+            card.style.pointerEvents = "none";
+          }
+        });
+
+        visibleCards = Array.from(cards).filter(
+          (c) => filter === "all" || c.dataset.category === filter,
+        );
+        resultsText.textContent = `Showing ${count} of ${cards.length} sites`;
+      }
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          filterGallery(btn.dataset.filter);
+        });
+      });
+
+      updateFilterCounts();
+
+      // --- Lightbox Logic ---
+      const lightbox = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lb-img");
+      const lbCat = lightbox.querySelector(".lb-cat");
+      const lbTitle = lightbox.querySelector(".lb-title");
+      const lbDesc = lightbox.querySelector(".lb-desc");
+      const lbLoc = lightbox.querySelector(".lb-loc-text");
+      const lbLoader = lightbox.querySelector(".lb-loader");
+      let currentIndex = 0;
+
+      function updateLightboxContent(index) {
+        const card = visibleCards[index];
+        lbLoader.style.opacity = "1";
+        lbImg.style.opacity = "0";
+
+        lbImg.src = card.dataset.img;
+        lbCat.textContent = card.dataset.category;
+        lbTitle.textContent = card.dataset.title;
+        lbDesc.textContent = card.dataset.description;
+        lbLoc.textContent = card.dataset.location;
+
+        lbImg.onload = () => {
+          lbLoader.style.opacity = "0";
+          lbImg.style.opacity = "1";
+        };
+      }
+
+      function openLightbox(card) {
+        currentIndex = visibleCards.indexOf(card);
+        updateLightboxContent(currentIndex);
+        lightbox.classList.add("lb-open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("lb-open");
+        document.body.style.overflow = "";
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % visibleCards.length;
+        updateLightboxContent(currentIndex);
+      }
+
+      function prevImage() {
+        currentIndex =
+          (currentIndex - 1 + visibleCards.length) % visibleCards.length;
+        updateLightboxContent(currentIndex);
+      }
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => openLightbox(card));
+      });
+
+      lightbox
+        .querySelector(".lb-close")
+        .addEventListener("click", closeLightbox);
+      lightbox
+        .querySelector(".lb-backdrop")
+        .addEventListener("click", closeLightbox);
+      lightbox.querySelector(".lb-next").addEventListener("click", (e) => {
+        e.stopPropagation();
+        nextImage();
+      });
+      lightbox.querySelector(".lb-prev").addEventListener("click", (e) => {
+        e.stopPropagation();
+        prevImage();
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("lb-open")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "ArrowLeft") prevImage();
+      });
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+      lightbox.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true },
+      );
+      lightbox.addEventListener(
+        "touchend",
+        (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        },
+        { passive: true },
+      );
+
+      function handleSwipe() {
+        const deltaX = touchEndX - touchStartX;
+        if (deltaX < -50) nextImage();
+        if (deltaX > 50) prevImage();
+      }
+    </script>
+  </body>
+</html>

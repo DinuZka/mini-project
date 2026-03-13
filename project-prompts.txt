@@ -1,0 +1,274 @@
+You are a senior frontend developer. I am building a multi-page static website 
+called "Historical Sites of Sri Lanka" as a university group mini project. 
+The site must run locally — no frameworks, no npm, no build tools. 
+Just HTML, CSS, and vanilla JavaScript files that open in a browser.
+
+════════════════════════════════════════════
+DESIGN SYSTEM — Apply this to ALL pages
+════════════════════════════════════════════
+
+Color palette (use as CSS variables in :root):
+  --stone:      #c8a96e
+  --deep:       #1a1208
+  --parchment:  #f5ede0
+  --rust:       #8b3a1e
+  --gold:       #d4a843
+  --ivory:      #fdf8f0
+  --smoke:      #6b5d4f
+  --crimson:    #8b1a1a
+  --saffron:    #e8a020
+  --night:      #0e0705
+
+Typography (load from Google Fonts):
+  - Headings:   'Cormorant Garamond' — elegant, editorial serif
+  - Labels/Nav: 'Cinzel' — all-caps, classical Roman feel
+  - Body:       'Crimson Pro' — refined readable serif
+
+Global rules:
+  - Fixed navigation bar, dark background rgba(26,18,8,0.93),
+    gold logo left, nav links right in Cinzel small-caps
+  - All sections have generous padding (5rem–7rem vertical)
+  - Section labels: Cinzel, 0.65rem, 0.4em letter-spacing, uppercase, rust or gold
+  - Section titles: Cormorant Garamond, 300 weight, clamp(2.5rem, 5vw, 4rem)
+  - Gold gradient divider line (60px wide, 2px tall) below every section title
+  - Scroll-reveal animation: elements start opacity:0 translateY(30px),
+    transition to visible using IntersectionObserver
+  - Fully responsive: mobile breakpoint at 900px and 600px
+  - NO purple gradients, NO Inter/Roboto fonts, NO generic AI aesthetics
+  - Sepia filter on images: filter: sepia(12%) saturate(88%)
+  - Footer: dark background, brand name left, page link right
+
+════════════════════════════════════════════
+FILE 1 — index.html  (Homepage)
+════════════════════════════════════════════
+
+Build a stunning homepage with these exact sections:
+
+1. HERO SECTION
+   - Full-viewport height
+   - Background: Sigiriya image from Wikimedia Commons with dark overlay
+     URL: https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Sigiriya_mirror_wall.jpg/1280px-Sigiriya_mirror_wall.jpg
+   - Slow zoom animation on the background (scale 1 → 1.06, 18s alternate)
+   - Eyebrow label: "Discover Sri Lanka's Ancient Heritage" in Cinzel gold
+   - H1: "Where History" (normal weight) + "Lives in Stone" (italic, stone color)
+     — staggered fade-in animations with animation-delay
+   - Subtitle paragraph (max-width 500px, parchment color, 300 weight)
+   - Two CTA buttons: primary filled (gold bg, dark text) + ghost outlined
+   - Animated vertical scroll indicator bottom-right
+
+2. INTRO STRIP (dark background --deep)
+   - Left: section label + large title + gold divider + 2 paragraphs about
+     Sri Lanka's UNESCO heritage sites
+   - Right: 2×2 stat grid with bordered cards and a left gold accent bar each:
+       "8"      UNESCO Sites
+       "2,500+" Years of History
+       "3"      Ancient Capitals
+       "1815"   Last Kingdom Fell
+   - Large faded watermark text "HERITAGE" behind the section
+
+3. FEATURED DESTINATIONS (3 cards on parchment background)
+   Card 1 — Sigiriya
+     image: https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Sigiriya_mirror_wall.jpg/800px-Sigiriya_mirror_wall.jpg
+   Card 2 — Anuradhapura & Polonnaruwa
+     image: https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Anuradhapura_Ruwanwelisaya_stupa.jpg/800px-Anuradhapura_Ruwanwelisaya_stupa.jpg
+   Card 3 — Kandy
+     image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg/800px-Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg
+
+   Each card:
+   - Image with sepia filter, zoom on hover
+   - Dark gradient overlay on bottom half
+   - Site name in Cormorant Garamond over image
+   - Period label in Cinzel gold
+   - Short 2-sentence description below
+   - "Explore →" link in rust color
+   - Hover: lift (translateY -6px) + stronger shadow
+   - Card 1 links to ancient-cities.html, Card 3 to kandy.html
+
+4. WHY VISIT STRIP (crimson background)
+   - Centered title
+   - 3 icon feature blocks side by side:
+       🏛  "Ancient Wonders"   — 3 UNESCO sites within 100km of each other
+       🌿  "Living Traditions" — Ceremonies and festivals still practiced today
+       🗺  "Easy to Explore"   — Compact island, rich in variety
+   - Each block: large icon, Cinzel label, paragraph text in parchment
+
+5. QUICK FACTS BANNER (ivory background, subtle pattern)
+   - Horizontal scrolling ticker or static row of 5 facts in pill/badge style:
+       "🦷 Tooth Relic housed since 4th century AD"
+       "🌳 World's oldest documented tree — Anuradhapura"
+       "🏰 Sigiriya built in 477 AD"
+       "📜 Mahavamsa — one of world's oldest histories"
+       "🎭 Kandyan dance — UNESCO Intangible Heritage"
+
+6. FOOTER
+   - Dark (--night) background
+   - Logo left, navigation links center, tagline right
+   - Bottom bar: "Historical Sites of Sri Lanka — Group Mini Project"
+   - Link to ancient-cities.html and kandy.html
+
+════════════════════════════════════════════
+FILE 2 — ancient-cities.html
+════════════════════════════════════════════
+
+Build a page for Anuradhapura AND Polonnaruwa with:
+
+1. FIXED NAV — links: Home | Anuradhapura | Polonnaruwa | Visitor Info | Kandy →
+
+2. HERO
+   Background: https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Anuradhapura_Ruwanwelisaya_stupa.jpg/1280px-Anuradhapura_Ruwanwelisaya_stupa.jpg
+   Title: "The Ancient" + italic "Sacred Cities"
+   Slow zoom animation. Eyebrow: "UNESCO World Heritage Sites"
+
+3. DARK INTRO STRIP (--deep background)
+   Left: title "Kingdoms That Shaped Asia" + 2 paragraphs
+   Right: 2×2 stat grid:
+     "2,300+"  Years of History
+     "2"       UNESCO Sites
+     "40 km²"  Sacred City Area
+     "1982"    UNESCO Designation
+
+4. ANURADHAPURA SECTION (id="anuradhapura")
+   - Full-width city banner image (55vh) with overlay
+     URL: same as hero
+   - City name "Anuradhapura" over the image in large Cormorant Garamond
+   - Period: "Kingdom Founded c.380 BC — Capital for 1,400 Years"
+   - Below: 2-column grid (description left, monuments right)
+   - Description: 3 paragraphs about the city's history
+   - 5 monument cards with left gold border:
+       Ruwanwelisaya Stupa, Sri Maha Bodhi, Jetavanaramaya,
+       Thuparamaya, Twin Ponds (Kuttam Pokuna)
+   - Each monument: name in Cormorant bold, 1–2 sentence description
+
+5. COLOR SEPARATOR
+   6px bar: gradient left-to-right rust → gold → forest green
+
+6. POLONNARUWA SECTION (id="polonnaruwa")
+   - City banner image:
+     https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Gal_Vihara_Polonnaruwa.jpg/1280px-Gal_Vihara_Polonnaruwa.jpg
+   - Mirror layout: monuments LEFT, description RIGHT
+   - Period: "Medieval Capital c.993–1310 AD"
+   - 5 monuments: Gal Vihara, Parakrama Samudra, Lankatilaka,
+                  Vatadage, Royal Palace of Parakramabahu
+
+7. PHOTO GALLERY (4 images in CSS grid)
+   - First image spans 2 columns and 2 rows
+   - Hover: scale(1.05) + caption overlay fades in from bottom
+   Images:
+     https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Gal_Vihara_Polonnaruwa.jpg/800px-Gal_Vihara_Polonnaruwa.jpg
+     https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Anuradhapura_Ruwanwelisaya_stupa.jpg/600px-Anuradhapura_Ruwanwelisaya_stupa.jpg
+     https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Vatadage_Polonnaruwa.jpg/600px-Vatadage_Polonnaruwa.jpg
+     https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Isurumuniya_Lovers.JPG/600px-Isurumuniya_Lovers.JPG
+
+8. VISITOR INFO (dark background, 3-column card grid)
+   Cards: Opening Hours | Entry Fees | Getting There |
+          Best Time | Dress Code | Travel Tips
+
+9. FOOTER — link back to index.html, link to kandy.html
+
+════════════════════════════════════════════
+FILE 3 — kandy.html
+════════════════════════════════════════════
+
+Build a page for Kandy and the Temple of the Sacred Tooth Relic with:
+
+1. FIXED NAV — links: Home | History | The Temple | Festivals | Visit | ← Ancient Cities
+
+2. HERO
+   Background: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg/1280px-Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg
+   Pill tag: "UNESCO World Heritage · Cultural Triangle"
+   Title: "Kandy" large + italic accent "City of the Sacred Tooth"
+   Animation: slow diagonal drift (scale + translateX)
+   Decorative dot grid overlay (radial-gradient pattern, very subtle)
+
+3. PULL QUOTE (crimson background)
+   Quote: "Whoever holds the relic of the Tooth of the Buddha,
+           holds sovereignty over the whole island of Lanka."
+   Attribution: — Mahavamsa, Ancient Sri Lankan Chronicle
+   Large decorative " mark in background (4% opacity)
+
+4. KANDY INTRO (id="history") — 2 columns
+   Left: title "A Kingdom in the Mountains" + 4 paragraphs
+   Right: image with decorative offset gold border frame
+   Image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg/800px-Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg
+
+5. HISTORY TIMELINE (dark background, id="timeline")
+   Vertical line on left (gold gradient top → transparent bottom)
+   Each entry has: gold dot on line, year label, event name, detail paragraph
+   6 entries:
+     4th Century AD — Tooth Relic Arrives in Sri Lanka
+     1592           — Kandy Becomes Capital
+     1600s–1700s    — Resistance Against Colonial Powers
+     1765           — Current Temple Complex Built
+     1815           — The Kandyan Convention (British annexation)
+     1988           — UNESCO World Heritage Designation
+   Animation: each entry slides in from left with staggered delay on scroll
+
+6. TEMPLE SECTION (parchment background, id="temple")
+   Title: "Temple of the Sacred Tooth Relic"
+   2 columns: temple interior image LEFT, 5 feature blocks RIGHT
+   Image: https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Temple_of_the_Tooth_interior.jpg/800px-Temple_of_the_Tooth_interior.jpg
+   Features (Cinzel label + paragraph each):
+     The Sacred Relic | Architecture | The Museum Complex |
+     Daily Puja Ceremonies | Political & Spiritual Power
+
+7. FESTIVALS SECTION (ivory background, id="festivals")
+   - Full-width Esala Perahera banner image (420px tall):
+     https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Kandy_Esala_Perahera_2019.jpg/1280px-Kandy_Esala_Perahera_2019.jpg
+   - Intro paragraph about the Perahera
+   - 4 festival cards (crimson top border, hover lift):
+       Esala Perahera (July/Aug), Vesak Poya (May),
+       Poson Poya (June), Duruthu Perahera (January)
+
+8. CULTURAL SIGNIFICANCE (--night background)
+   3 columns separated by subtle vertical borders:
+     01 Buddhist Heritage
+     02 Kandyan Arts
+     03 National Identity
+   Large faded number (4rem, 15% opacity) behind each title
+
+9. VISITOR INFO (crimson background)
+   6 cards: Temple Hours | Entry Fees | Getting to Kandy |
+            Temple Etiquette | Best Time | Nearby Attractions
+
+10. FOOTER — links back to index.html and ancient-cities.html
+
+════════════════════════════════════════════
+GLOBAL JAVASCRIPT (add inline in each file)
+════════════════════════════════════════════
+
+Add this scroll-reveal logic to every page:
+
+  const reveals = document.querySelectorAll('.reveal, .timeline-entry');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 90);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(r => io.observe(r));
+
+CSS for reveal:
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+════════════════════════════════════════════
+OUTPUT INSTRUCTIONS
+════════════════════════════════════════════
+
+- Generate all 3 files: index.html, ancient-cities.html, kandy.html
+- Each file must be self-contained (CSS inside <style>, JS inside <script>)
+- All 3 files must link to each other correctly via <a href="">
+- Use Google Fonts via <link> tag (Cormorant Garamond, Cinzel, Crimson Pro)
+- All images load from the exact Wikimedia URLs I provided
+- No frameworks (no React, no Vue, no Tailwind, no npm)
+- No external CSS files — everything inline in each HTML file
+- Must work by simply opening in a browser with no server
+- Must be mobile responsive with breakpoints at 900px and 600px
+- Apply .reveal class to every major section block for scroll animation
+- Generate complete, production-ready code — no placeholders or TODOs

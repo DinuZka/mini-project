@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kandy | Historical Sites of Sri Lanka</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Crimson+Pro:wght@200;300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --stone: #c8a96e;
+        --deep: #1a1208;
+        --parchment: #f5ede0;
+        --rust: #8b3a1e;
+        --gold: #d4a843;
+        --ivory: #fdf8f0;
+        --smoke: #6b5d4f;
+        --crimson: #8b1a1a;
+        --saffron: #e8a020;
+        --night: #0e0705;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Crimson Pro", serif;
+        background-color: var(--parchment);
+        color: var(--deep);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Nav */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 5%;
+        background: rgba(26, 18, 8, 0.93);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+      }
+
+      .logo {
+        font-family: "Cinzel", serif;
+        color: var(--gold);
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        font-family: "Cinzel", serif;
+        font-variant: small-caps;
+        color: var(--ivory);
+        text-decoration: none;
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+        transition: color 0.3s ease;
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+
+      /* Hero */
+      .hero {
+        height: 90vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: var(--ivory);
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          linear-gradient(rgba(14, 7, 5, 0.5), rgba(14, 7, 5, 0.5)),
+          url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg/1280px-Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg");
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        animation: diagonalDrift 20s infinite alternate ease-in-out;
+      }
+
+      @keyframes diagonalDrift {
+        from {
+          transform: scale(1) translate(0, 0);
+        }
+        to {
+          transform: scale(1.1) translate(2%, 2%);
+        }
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+          var(--ivory) 0.5px,
+          transparent 0.5px
+        );
+        background-size: 30px 30px;
+        opacity: 0.1;
+        pointer-events: none;
+      }
+
+      .pill-tag {
+        background-color: var(--gold);
+        color: var(--night);
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-family: "Cinzel", serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+      }
+
+      .hero h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(4rem, 10vw, 7rem);
+        font-weight: 300;
+        line-height: 1;
+      }
+
+      .hero h1 span {
+        font-style: italic;
+        color: var(--stone);
+        display: block;
+        font-size: 0.6em;
+        margin-top: 0.5rem;
+      }
+
+      /* Sections */
+      section {
+        padding: 7rem 10%;
+        position: relative;
+      }
+      .section-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--rust);
+        display: block;
+        margin-bottom: 1rem;
+      }
+      .section-title {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 300;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: var(--deep);
+        margin-bottom: 1.5rem;
+      }
+      .divider {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(to right, var(--gold), var(--stone));
+        margin-bottom: 2.5rem;
+      }
+
+      /* Pull Quote */
+      .pull-quote {
+        background-color: var(--crimson);
+        color: var(--parchment);
+        text-align: center;
+        padding: 6rem 15%;
+        position: relative;
+        overflow: hidden;
+      }
+      .pull-quote::before {
+        content: '"';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30rem;
+        font-family: "Cormorant Garamond", serif;
+        color: rgba(255, 255, 255, 0.04);
+        line-height: 1;
+      }
+      .quote-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.2rem;
+        font-style: italic;
+        margin-bottom: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+      .attribution {
+        font-family: "Cinzel", serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        color: var(--gold);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Intro */
+      .kandy-intro {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      .intro-img-frame {
+        position: relative;
+        padding: 20px;
+      }
+      .intro-img-frame::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80%;
+        height: 80%;
+        border: 2px solid var(--gold);
+        z-index: -1;
+      }
+      .intro-img {
+        width: 100%;
+        display: block;
+        filter: sepia(12%) saturate(88%);
+      }
+
+      /* Location Pill */
+      .location-pill {
+        display: inline-block;
+        font-family: "Cinzel", serif;
+        font-size: 0.58rem;
+        letter-spacing: 0.15em;
+        color: var(--gold);
+        background: rgba(212, 168, 67, 0.1);
+        border: 1px solid rgba(212, 168, 67, 0.2);
+        padding: 0.2rem 0.6rem;
+        margin: 0.3rem 0 0.4rem;
+        text-transform: uppercase;
+      }
+
+      /* Timeline */
+      .timeline-section {
+        background-color: var(--deep);
+        color: var(--parchment);
+      }
+      .timeline-container {
+        position: relative;
+        max-width: 800px;
+        margin: 4rem auto 0;
+        padding-left: 3rem;
+      }
+      .timeline-line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--gold), transparent);
+      }
+      .timeline-entry {
+        position: relative;
+        margin-bottom: 4rem;
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.8s ease;
+      }
+      .timeline-entry.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -3rem;
+        top: 0.5rem;
+        width: 12px;
+        height: 12px;
+        background-color: var(--gold);
+        border-radius: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 15px var(--gold);
+      }
+      .year-label {
+        font-family: "Cinzel", serif;
+        color: var(--gold);
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+      .event-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: white;
+      }
+
+      /* Temple Section */
+      .temple-section {
+        background-color: var(--parchment);
+      }
+      .temple-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: start;
+      }
+      .feature-block {
+        margin-bottom: 2.5rem;
+      }
+      .feature-label {
+        font-family: "Cinzel", serif;
+        color: var(--rust);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.5rem;
+        display: block;
+        text-transform: uppercase;
+      }
+
+      /* Festivals */
+      .festivals-section {
+        background-color: var(--ivory);
+      }
+      .perahera-banner {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        margin: 3rem 0;
+        filter: sepia(12%) saturate(88%);
+      }
+      .festival-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+      }
+      .festival-card {
+        background: white;
+        padding: 2rem;
+        border-top: 4px solid var(--crimson);
+        transition: transform 0.3s ease;
+      }
+      .festival-card:hover {
+        transform: translateY(-10px);
+      }
+      .festival-card h4 {
+        font-family: "Cinzel", serif;
+        margin-bottom: 1rem;
+        color: var(--deep);
+      }
+
+      /* Map Section */
+      .map-section {
+        background-color: var(--deep);
+        color: var(--parchment);
+      }
+      .map-section .section-label {
+        color: var(--gold);
+      }
+      .map-section .section-title {
+        color: white;
+      }
+
+      .map-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .map-grid .map-card:nth-child(n + 4) {
+        grid-column: span 1;
+      }
+      /* Desktop: 3 columns first row, 2 centered second row */
+      @media (min-width: 901px) {
+        .map-grid {
+          grid-template-columns: repeat(6, 1fr);
+        }
+        .map-card {
+          grid-column: span 2;
+        }
+        .map-card:nth-child(4) {
+          grid-column: 2 / span 2;
+        }
+        .map-card:nth-child(5) {
+          grid-column: 4 / span 2;
+        }
+      }
+
+      .map-card {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 1.5rem;
+        border: 1px solid rgba(212, 168, 67, 0.1);
+        transition: border-color 0.3s ease;
+      }
+      .map-card:hover {
+        border-color: var(--gold);
+      }
+      .map-card h4 {
+        font-family: "Cinzel", serif;
+        font-size: 0.8rem;
+        color: var(--ivory);
+        margin-bottom: 1rem;
+        letter-spacing: 0.1em;
+      }
+      .map-card iframe {
+        border: 2px solid rgba(212, 168, 67, 0.3);
+        transition: border-color 0.3s ease;
+      }
+      .map-card:hover iframe {
+        border-color: var(--gold);
+      }
+      .map-details {
+        margin-top: 1rem;
+        font-family: "Crimson Pro", serif;
+        font-size: 0.9rem;
+        color: var(--smoke);
+      }
+      .map-details .coords {
+        display: block;
+        color: var(--gold);
+        font-family: "Cinzel", serif;
+        font-size: 0.7rem;
+        margin-bottom: 0.3rem;
+      }
+
+      /* Significance */
+      .significance {
+        background-color: var(--night);
+        color: var(--parchment);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+      .sig-col {
+        padding: 5rem 3rem;
+        position: relative;
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .sig-col:last-child {
+        border-right: none;
+      }
+      .sig-num {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        font-family: "Cinzel", serif;
+        font-size: 4rem;
+        color: rgba(255, 255, 255, 0.15);
+        line-height: 1;
+      }
+      .sig-content {
+        position: relative;
+        z-index: 1;
+      }
+      .sig-content h4 {
+        font-family: "Cinzel", serif;
+        margin-bottom: 1.5rem;
+        color: var(--gold);
+      }
+
+      /* Visitor Info */
+      .visitor-info {
+        background-color: var(--crimson);
+        color: var(--parchment);
+      }
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      .info-card {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .info-card h4 {
+        font-family: "Cinzel", serif;
+        color: var(--gold);
+        margin-bottom: 1rem;
+      }
+
+      /* Reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--night);
+        color: var(--parchment);
+        padding: 4rem 10% 2rem;
+        text-align: center;
+      }
+      .footer-nav {
+        margin-bottom: 2rem;
+      }
+      .footer-nav a {
+        color: var(--ivory);
+        text-decoration: none;
+        font-family: "Cinzel", serif;
+        margin: 0 1.5rem;
+        font-size: 0.8rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .kandy-intro,
+        .temple-grid,
+        .festival-cards,
+        .significance,
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+        .sig-col {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .map-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+        .map-card {
+          grid-column: span 1 !important;
+        }
+      }
+      @media (max-width: 600px) {
+        .nav-links {
+          display: none;
+        }
+        .quote-text {
+          font-size: 1.5rem;
+        }
+        .map-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .map-card {
+          grid-column: span 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="logo">LANKA HERITAGE</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#history">History</a>
+        <a href="#temple">The Temple</a>
+        <a href="#festivals">Festivals</a>
+        <a href="#locations">Locations</a>
+        <a href="ancient-cities.html">← Ancient Cities</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="pill-tag reveal">
+        UNESCO World Heritage · Cultural Triangle
+      </div>
+      <h1 class="reveal">Kandy<span>City of the Sacred Tooth</span></h1>
+    </header>
+
+    <div class="pull-quote reveal">
+      <p class="quote-text">
+        "Whoever holds the relic of the Tooth of the Buddha, holds sovereignty
+        over the whole island of Lanka."
+      </p>
+      <span class="attribution">— Mahavamsa, Ancient Sri Lankan Chronicle</span>
+    </div>
+
+    <section id="history" class="kandy-intro">
+      <div class="intro-content reveal">
+        <span class="section-label">The Last Stronghold</span>
+        <h2 class="section-title">A Kingdom in the Mountains</h2>
+        <div class="divider"></div>
+        <p>
+          Kandy, known to locals as Maha Nuwara (The Great City), was the last
+          royal capital of Sri Lanka. Nestled among the emerald hills of the
+          central highlands, it remained an independent kingdom long after the
+          coastal regions fell to European colonial powers.
+        </p>
+        <p>
+          The city's natural fortification by mountains and the Mahaweli River
+          allowed the Kandyan kings to preserve their unique culture, arts, and
+          political autonomy for over two centuries against the Portuguese and
+          Dutch.
+        </p>
+        <p>
+          Even today, Kandy remains the spiritual heart of the nation, a place
+          where the traditions of the ancient past continue to breathe in the
+          modern world.
+        </p>
+        <p>
+          Its layout, centered around the picturesque Kandy Lake and the sacred
+          temple complex, reflects a harmonious blend of nature and royal urban
+          planning.
+        </p>
+      </div>
+      <div class="intro-img-frame reveal">
+        <img
+          src="images/kandy-temple.webp"
+          alt="Kandy Temple"
+          class="intro-img"
+        />
+      </div>
+    </section>
+
+    <section id="timeline" class="timeline-section">
+      <span class="section-label" style="color: var(--gold)"
+        >Chronicles of the Hill Capital</span
+      >
+      <h2 class="section-title" style="color: white">History Timeline</h2>
+      <div class="divider"></div>
+
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <span class="year-label">4th Century AD</span>
+          <h3 class="event-name">Tooth Relic Arrives in Sri Lanka</h3>
+          <p>
+            Brought from Kalinga, India, hidden in the hair of Princess
+            Hemamala, the relic became a symbol of divine right to rule.
+          </p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <span class="year-label">1592</span>
+          <h3 class="event-name">Kandy Becomes Capital</h3>
+          <p>
+            King Vimaladharmasuriya I established Kandy as the royal seat,
+            bringing the Tooth Relic to the city for protection.
+          </p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <span class="year-label">1600s–1700s</span>
+          <h3 class="event-name">Resistance Against Colonial Powers</h3>
+          <p>
+            The kingdom successfully repelled numerous invasions by the
+            Portuguese and Dutch, utilizing the rugged terrain.
+          </p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <span class="year-label">1765</span>
+          <h3 class="event-name">Current Temple Complex Built</h3>
+          <p>
+            King Kirti Sri Rajasinha oversaw the construction of much of the
+            temple complex seen today, showcasing classic Kandyan architecture.
+          </p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <span class="year-label">1815</span>
+          <h3 class="event-name">The Kandyan Convention</h3>
+          <p>
+            The kingdom was finally ceded to the British Empire through a
+            treaty, ending over 2,300 years of monarchical rule in Sri Lanka.
+          </p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <span class="year-label">1988</span>
+          <h3 class="event-name">UNESCO World Heritage Designation</h3>
+          <p>
+            The sacred city of Kandy was recognized for its immense cultural
+            value and historical significance to the Buddhist world.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="temple" class="temple-section">
+      <h2 class="section-title reveal">Temple of the Sacred Tooth Relic</h2>
+      <div class="divider"></div>
+
+      <div class="temple-grid">
+        <div class="temple-img-wrap reveal">
+          <img
+            src="images/kandy-temple-of-tooth.webp"
+            alt="Temple Interior"
+            class="intro-img"
+          />
+        </div>
+        <div class="temple-features reveal">
+          <div class="feature-block">
+            <span class="feature-label">The Sacred Relic</span>
+            <span class="location-pill">📍 7.2936°N 80.6413°E · Kandy</span>
+            <p>
+              Enshrined in seven golden caskets, the tooth of the Buddha is the
+              ultimate object of veneration for millions.
+            </p>
+          </div>
+          <div class="feature-block">
+            <span class="feature-label">Architecture</span>
+            <p>
+              The "Dalada Maligawa" features iconic Kandyan elements like the
+              octagonal tower (Pattirippuwa) and moonstones.
+            </p>
+          </div>
+          <div class="feature-block">
+            <span class="feature-label">The Museum Complex</span>
+            <p>
+              Housing ancient royal artifacts and a record of the global
+              significance of the Tooth Relic throughout history.
+            </p>
+          </div>
+          <div class="feature-block">
+            <span class="feature-label">Daily Puja Ceremonies</span>
+            <p>
+              Ancient rituals performed thrice daily by monks, accompanied by
+              traditional drumming and horns.
+            </p>
+          </div>
+          <div class="feature-block">
+            <span class="feature-label">Political & Spiritual Power</span>
+            <p>
+              Historically, the relic was the palladium of the state; today, it
+              remains central to Sri Lankan national identity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="festivals" class="festivals-section">
+      <span class="section-label">Living Heritage</span>
+      <h2 class="section-title">The Grandest Pageants</h2>
+      <div class="divider"></div>
+      <p class="reveal">
+        Kandy is famous for its vibrant festivals, the most spectacular being
+        the Esala Perahera, a centuries-old tradition that brings the streets to
+        life with music and light.
+      </p>
+
+      <img
+        src="images/esala-perahara.webp"
+        alt="Esala Perahera"
+        class="perahera-banner reveal"
+      />
+
+      <div class="festival-cards">
+        <div class="festival-card reveal">
+          <h4>Esala Perahera</h4>
+          <p>
+            July/August. Ten days of grand processions with over 100 decorated
+            elephants, dancers, and drummers.
+          </p>
+        </div>
+        <div class="festival-card reveal">
+          <h4>Vesak Poya</h4>
+          <p>
+            May. Commemorating Buddha's birth, enlightenment, and death with
+            elaborate lanterns and oil lamps.
+          </p>
+        </div>
+        <div class="festival-card reveal">
+          <h4>Poson Poya</h4>
+          <p>
+            June. Marking the arrival of Buddhism in Sri Lanka, celebrated with
+            spiritual devotion across the city.
+          </p>
+        </div>
+        <div class="festival-card reveal">
+          <h4>Duruthu Perahera</h4>
+          <p>
+            January. A significant Buddhist pageant marking the first visit of
+            the Buddha to Sri Lanka.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="significance">
+      <div class="sig-col reveal">
+        <span class="sig-num">01</span>
+        <div class="sig-content">
+          <h4>Buddhist Heritage</h4>
+          <p>
+            Kandy is the foremost site of Buddhist pilgrimage in Sri Lanka,
+            attracting devotees from across the globe.
+          </p>
+        </div>
+      </div>
+      <div class="sig-col reveal">
+        <span class="sig-num">02</span>
+        <div class="sig-content">
+          <h4>Kandyan Arts</h4>
+          <p>
+            The city is the cradle of traditional dance, music, and crafts like
+            brasswork and lacquerware.
+          </p>
+        </div>
+      </div>
+      <div class="sig-col reveal">
+        <span class="sig-num">03</span>
+        <div class="sig-content">
+          <h4>National Identity</h4>
+          <p>
+            Kandy represents the resilience and cultural independence of the Sri
+            Lankan people throughout the centuries.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <section id="locations" class="map-section reveal">
+      <span class="section-label">Locations</span>
+      <h2 class="section-title">Find Your Way</h2>
+      <div class="divider"></div>
+      <div class="map-grid">
+        <!-- Tooth Relic -->
+        <div class="map-card reveal">
+          <h4>Temple of the Sacred Tooth Relic</h4>
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=80.6333,7.2876,80.6493,7.2996&layer=mapnik&marker=7.2936,80.6413"
+            width="100%"
+            height="300"
+            loading="lazy"
+            title="Map of Temple of the Sacred Tooth Relic"
+          >
+          </iframe>
+          <div class="map-details">
+            <span class="coords">7.2936°N, 80.6413°E</span>
+            Sri Dalada Veediya, Kandy 20000
+          </div>
+        </div>
+        <!-- Kandy Lake -->
+        <div class="map-card reveal">
+          <h4>Kandy Lake (Kiri Muhuda)</h4>
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=80.6357,7.2845,80.6517,7.2965&layer=mapnik&marker=7.2905,80.6437"
+            width="100%"
+            height="300"
+            loading="lazy"
+            title="Map of Kandy Lake"
+          >
+          </iframe>
+          <div class="map-details">
+            <span class="coords">7.2905°N, 80.6437°E</span>
+            Kandy Lake, Kandy, Central Province
+          </div>
+        </div>
+        <!-- Peradeniya -->
+        <div class="map-card reveal">
+          <h4>Peradeniya Royal Botanical Gardens</h4>
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=80.5886,7.2623,80.6046,7.2743&layer=mapnik&marker=7.2683,80.5966"
+            width="100%"
+            height="300"
+            loading="lazy"
+            title="Map of Peradeniya Royal Botanical Gardens"
+          >
+          </iframe>
+          <div class="map-details">
+            <span class="coords">7.2683°N, 80.5966°E</span>
+            Peradeniya, Kandy 20400
+          </div>
+        </div>
+        <!-- Bahirawakanda -->
+        <div class="map-card reveal">
+          <h4>Bahirawakanda Buddha Statue</h4>
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=80.6280,7.2931,80.6440,7.3051&layer=mapnik&marker=7.2991,80.6360"
+            width="100%"
+            height="300"
+            loading="lazy"
+            title="Map of Bahirawakanda Buddha Statue"
+          >
+          </iframe>
+          <div class="map-details">
+            <span class="coords">7.2991°N, 80.6360°E</span>
+            Bahirawakanda, Kandy
+          </div>
+        </div>
+        <!-- Embekka -->
+        <div class="map-card reveal">
+          <h4>Embekka Devalaya</h4>
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=80.5420,7.2273,80.5580,7.2393&layer=mapnik&marker=7.2333,80.5500"
+            width="100%"
+            height="300"
+            loading="lazy"
+            title="Map of Embekka Devalaya"
+          >
+          </iframe>
+          <div class="map-details">
+            <span class="coords">7.2333°N, 80.5500°E</span>
+            Embekka, Kandy District
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visitor-info" class="visitor-info">
+      <span class="section-label" style="color: var(--gold)"
+        >Visitor Essentials</span
+      >
+      <h2 class="section-title" style="color: white">Planning Your Visit</h2>
+      <div class="divider"></div>
+      <div class="info-grid">
+        <div class="info-card reveal">
+          <h4>Temple Hours</h4>
+          <p>
+            Open daily from 5:30 AM to 8:00 PM. Puja ceremonies occur at 5:30
+            AM, 9:30 AM, and 6:30 PM.
+          </p>
+        </div>
+        <div class="info-card reveal">
+          <h4>Entry Fees</h4>
+          <p>
+            Foreign visitors must pay an entrance fee (approx $15) which
+            includes a guide booklet and footwear storage.
+          </p>
+        </div>
+        <div class="info-card reveal">
+          <h4>Getting to Kandy</h4>
+          <p>
+            The scenic "Udarata Menike" train from Colombo offers one of the
+            world's most beautiful rail journeys.
+          </p>
+        </div>
+        <div class="info-card reveal">
+          <h4>Temple Etiquette</h4>
+          <p>
+            Remove shoes and hats. Shoulders and knees must be covered. Silence
+            is required inside the sacred inner sanctum.
+          </p>
+        </div>
+        <div class="info-card reveal">
+          <h4>Best Time</h4>
+          <p>
+            The Esala Perahera in August is the most vibrant time, though
+            December to April offers the best weather for exploring.
+          </p>
+        </div>
+        <div class="info-card reveal">
+          <h4>Nearby Attractions</h4>
+          <p>
+            Peradeniya Royal Botanical Gardens, Bahirawakanda Buddha Statue, and
+            the Udawatte Kele Sanctuary.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="ancient-cities.html">Ancient Cities</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--smoke)">
+        Historical Sites of Sri Lanka — Group Mini Project
+      </p>
+    </footer>
+
+    <script>
+      const reveals = document.querySelectorAll(".reveal, .timeline-entry");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add("visible"), i * 90);
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+      reveals.forEach((r) => io.observe(r));
+    </script>
+  </body>
+</html>

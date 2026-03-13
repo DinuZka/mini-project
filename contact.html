@@ -1,130 +1,465 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us | Lanka Heritage</title>
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/main.css">
-</head>
-<body>
-    <header class="navbar">
-        <nav class="container">
-            <div class="logo">Lanka<span>Heritage</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="index.html#destinations">Destinations</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-                <li>
-                    <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-                        <span class="moon-icon">🌙</span>
-                    </button>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Crimson+Pro:wght@200;300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --stone: #c8a96e;
+        --deep: #1a1208;
+        --parchment: #f5ede0;
+        --rust: #8b3a1e;
+        --gold: #d4a843;
+        --ivory: #fdf8f0;
+        --smoke: #6b5d4f;
+        --crimson: #8b1a1a;
+        --saffron: #e8a020;
+        --night: #0e0705;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Crimson Pro", serif;
+        background-color: var(--parchment);
+        color: var(--deep);
+        line-height: 1.6;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 5%;
+        background: rgba(26, 18, 8, 0.93);
+        z-index: 1000;
+        border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+      }
+
+      .logo {
+        font-family: "Cinzel", serif;
+        color: var(--gold);
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        font-family: "Cinzel", serif;
+        font-variant: small-caps;
+        color: var(--ivory);
+        text-decoration: none;
+        font-size: 0.85rem;
+        letter-spacing: 0.1em;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--gold);
+      }
+
+      /* Hero / Header Section */
+      .contact-header {
+        padding: 10rem 5% 4rem;
+        background-color: var(--deep);
+        color: var(--ivory);
+        text-align: center;
+        background-image:
+          linear-gradient(rgba(26, 18, 8, 0.8), rgba(26, 18, 8, 0.8)),
+          url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Sigiriya_Rock_Fortress_Sri_Lanka.jpg/1280px-Sigiriya_Rock_Fortress_Sri_Lanka.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .contact-header h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3rem, 6vw, 4.5rem);
+        font-weight: 300;
+        margin-bottom: 1rem;
+        color: var(--gold);
+      }
+
+      .contact-header p {
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.2rem;
+        opacity: 0.9;
+        font-style: italic;
+      }
+
+      /* Contact Section */
+      .contact-container {
+        max-width: 1100px;
+        margin: 4rem auto;
+        padding: 0 5%;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 4rem;
+      }
+
+      .contact-info {
+        padding: 2rem;
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid var(--gold);
+      }
+
+      .info-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.2rem;
+        color: var(--rust);
+        margin-bottom: 2rem;
+        letter-spacing: 0.1em;
+      }
+
+      .info-item {
+        margin-bottom: 1.5rem;
+      }
+
+      .info-item h4 {
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        color: var(--smoke);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.3rem;
+      }
+
+      .info-item p {
+        font-size: 1.1rem;
+        color: var(--deep);
+      }
+
+      /* Form Styling */
+      .contact-form {
+        background: white;
+        padding: 3rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        color: var(--smoke);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        background-color: var(--ivory);
+        font-family: "Crimson Pro", serif;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: var(--gold);
+      }
+
+      .submit-btn {
+        background-color: var(--gold);
+        color: var(--night);
+        border: none;
+        padding: 1rem 2rem;
+        font-family: "Cinzel", serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.3s;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        background-color: var(--rust);
+        color: white;
+      }
+
+      /* Social Links */
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        text-decoration: none;
+        color: var(--deep);
+        background: var(--ivory);
+        border: 1px solid var(--gold);
+        border-radius: 50%;
+        transition: all 0.3s;
+        font-size: 1.1rem;
+      }
+
+      .social-icon:hover {
+        background: var(--gold);
+        color: var(--night);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(212, 168, 67, 0.3);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--night);
+        color: var(--parchment);
+        padding: 5rem 10% 2rem;
+        margin-top: 4rem;
+      }
+
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-logo {
+        font-family: "Cinzel", serif;
+        color: var(--gold);
+        font-size: 1.5rem;
+        text-decoration: none;
+      }
+
+      .footer-nav {
+        display: flex;
+        gap: 2.5rem;
+      }
+
+      .footer-nav a {
+        color: var(--ivory);
+        text-decoration: none;
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        transition: color 0.3s ease;
+      }
+
+      .footer-nav a:hover {
+        color: var(--gold);
+      }
+
+      .footer-tagline {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: var(--stone);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+        color: var(--smoke);
+        text-align: center;
+      }
+
+      /* Responsive */
+      @media (max-width: 850px) {
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+        .footer-top {
+          flex-direction: column;
+          gap: 2rem;
+        }
+        .nav-links {
+          display: none; /* Simple for now */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="logo">LANKA HERITAGE</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html">Blogs</a>
+        <a href="ancient-cities.html">Ancient Cities</a>
+        <a href="kandy.html">Kandy</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+    </nav>
+
+    <header class="contact-header">
+      <h1>Contact Us</h1>
+      <p>
+        Whether you are planning a pilgrimage to the sacred cities or have
+        questions about our island's storied past, our heritage experts are here
+        to guide you.
+      </p>
     </header>
 
-    <main>
-        <section class="page-hero">
-            <div class="container">
-                <h1>Contact Us</h1>
-                <p>Have questions about Sri Lanka's historical sites? We're here to help.</p>
-            </div>
-        </section>
+    <div class="contact-container">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2 class="info-title">Office of the Registry</h2>
 
-        <section class="contact-section section-padding">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-form-container">
-                        <span class="section-tag">Get in Touch</span>
-                        <h2>Send us a Message</h2>
-                        <form id="contact-form" class="contact-form">
-                            <div class="form-group">
-                                <label for="name">Full Name</label>
-                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <select id="subject" name="subject" required>
-                                    <option value="" disabled selected>Select a subject</option>
-                                    <option value="general">General Inquiry</option>
-                                    <option value="tour">Tour Information</option>
-                                    <option value="heritage">Heritage Conservation</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
-                            </div>
-                            <button type="submit" class="btn">Send Message</button>
-                            <div id="form-status" class="form-status"></div>
-                        </form>
-                    </div>
-
-                    <div class="contact-info">
-                        <div class="info-item">
-                            <h3>Visit Us</h3>
-                            <p>123 Heritage Lane, Colombo 07, Sri Lanka</p>
-                        </div>
-                        <div class="info-item">
-                            <h3>Email Us</h3>
-                            <p>info@lankaheritage.com</p>
-                            <p>support@lankaheritage.com</p>
-                        </div>
-                        <div class="info-item">
-                            <h3>Call Us</h3>
-                            <p>+94 11 234 5678</p>
-                            <p>+94 77 123 4567</p>
-                        </div>
-                        <div class="info-item">
-                            <h3>Follow Us</h3>
-                            <div class="social-links">
-                                <a href="#">Facebook</a>
-                                <a href="#">Instagram</a>
-                                <a href="#">Twitter</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo">Lanka<span>Heritage</span></div>
-                    <p>Preserving the legacy of our ancestors.</p>
-                </div>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Lanka Heritage. All rights reserved.</p>
-            </div>
+        <div class="info-item">
+          <h4>Organization</h4>
+          <p>Lanka Heritage Foundation</p>
         </div>
-    </footer>
 
-    <script src="js/script.js"></script>
-</body>
+        <div class="info-item">
+          <h4>Email Address</h4>
+          <p>enquiries@lankaheritage.lk</p>
+        </div>
+
+        <div class="info-item">
+          <h4>Phone Number</h4>
+          <p>+94 11 258 4300</p>
+        </div>
+
+        <div class="info-item">
+          <h4>Headquarters</h4>
+          <p>128/A, Dharmapala Mawatha,<br />Colombo 07, Sri Lanka</p>
+        </div>
+
+        <div class="info-item">
+          <h4>Follow Our Journey</h4>
+          <div class="social-links">
+            <a
+              href="https://facebook.com/lankaheritage"
+              class="social-icon"
+              title="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://instagram.com/lankaheritage"
+              class="social-icon"
+              title="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://twitter.com/lankaheritage"
+              class="social-icon"
+              title="X"
+              ><i class="fab fa-x"></i
+            ></a>
+            <a
+              href="https://youtube.com/lankaheritage"
+              class="social-icon"
+              title="YouTube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <form class="contact-form" action="#" method="post">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="How can we help you?"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Write your message here..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+
+    <footer>
+      <div class="footer-top">
+        <a href="index.html" class="footer-logo">LANKA HERITAGE</a>
+        <div class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="ancient-cities.html">Ancient Cities</a>
+          <a href="kandy.html">Kandy</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <span class="footer-tagline">Preserving the echoes of the past.</span>
+      </div>
+      <div class="footer-bottom">
+        <p>Historical Sites of Sri Lanka — Group Mini Project</p>
+        <p>&copy; 2026 Lanka Heritage Foundation. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>
