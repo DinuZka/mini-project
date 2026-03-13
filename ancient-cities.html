@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Cities | Historical Sites of Sri Lanka</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Crimson+Pro:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --stone:      #c8a96e;
+            --deep:       #1a1208;
+            --parchment:  #f5ede0;
+            --rust:       #8b3a1e;
+            --gold:       #d4a843;
+            --ivory:      #fdf8f0;
+            --smoke:      #6b5d4f;
+            --crimson:    #8b1a1a;
+            --saffron:    #e8a020;
+            --night:      #0e0705;
+            --forest:     #2d4c2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background-color: var(--parchment);
+            color: var(--deep);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Nav */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background: rgba(26, 18, 8, 0.93);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-variant: small-caps;
+            color: var(--ivory);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Hero */
+        .hero {
+            height: 80vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--ivory);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(14, 7, 5, 0.6), rgba(14, 7, 5, 0.4)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Anuradhapura_Ruwanwelisaya_stupa.jpg/1280px-Anuradhapura_Ruwanwelisaya_stupa.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            animation: slowZoom 18s infinite alternate ease-in-out;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.06); }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span { font-style: italic; color: var(--stone); }
+
+        .eyebrow {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* Sections */
+        section { padding: 7rem 10%; position: relative; }
+        .section-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--rust);
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--deep);
+            margin-bottom: 1.5rem;
+        }
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, var(--gold), var(--stone));
+            margin-bottom: 2.5rem;
+        }
+
+        /* Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        /* Intro Strip */
+        .intro-strip {
+            background-color: var(--deep);
+            color: var(--parchment);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .intro-strip .section-title { color: var(--ivory); }
+        .intro-strip .section-label { color: var(--gold); }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 168, 67, 0.15);
+            padding: 2.5rem 2rem;
+            position: relative;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20%;
+            bottom: 20%;
+            width: 3px;
+            background-color: var(--gold);
+        }
+        .stat-num {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--stone);
+        }
+
+        /* City Sections */
+        .city-banner {
+            height: 55vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 10%;
+        }
+        .city-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(14, 7, 5, 0.5);
+            z-index: 1;
+        }
+        .city-banner-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(12%) saturate(88%);
+        }
+        .city-banner-content { position: relative; z-index: 2; }
+        .city-banner h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        .city-period {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+        }
+
+        .city-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            padding: 5rem 10%;
+            align-items: start;
+        }
+        .city-grid.mirror { grid-template-columns: 1fr 1fr; }
+        .city-grid.mirror .monuments-list { order: 1; }
+        .city-grid.mirror .city-description { order: 2; }
+
+        .monument-card {
+            border-left: 3px solid var(--gold);
+            padding: 1.5rem 2rem;
+            background: white;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+        .monument-card:hover { transform: translateX(10px); }
+        .monument-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        /* Location Pill */
+        .location-pill {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            background: rgba(212,168,67,0.1);
+            border: 1px solid rgba(212,168,67,0.2);
+            padding: 0.2rem 0.6rem;
+            margin: 0.3rem 0 0.4rem;
+            text-transform: uppercase;
+        }
+
+        /* Map Section */
+        .map-section {
+            background-color: var(--deep);
+            color: var(--parchment);
+        }
+        .map-section .section-label { color: var(--gold); }
+        .map-section .section-title { color: white; }
+        
+        .map-subsection-title {
+            font-family: 'Cinzel', serif;
+            color: var(--stone);
+            font-size: 1.2rem;
+            margin: 3rem 0 1.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(212,168,67,0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .map-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-2x2 { grid-template-columns: repeat(2, 1fr); }
+
+        .map-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border: 1px solid rgba(212,168,67,0.1);
+            transition: border-color 0.3s ease;
+        }
+        .map-card:hover {
+            border-color: var(--gold);
+        }
+        .map-card h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: var(--ivory);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+        .map-card iframe {
+            border: 2px solid rgba(212,168,67,0.3);
+            transition: border-color 0.3s ease;
+        }
+        .map-card:hover iframe {
+            border-color: var(--gold);
+        }
+        .map-details {
+            margin-top: 1rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 0.9rem;
+            color: var(--smoke);
+        }
+        .map-details .coords {
+            display: block;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Separator */
+        .color-separator {
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(to right, var(--rust), var(--gold), var(--forest));
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 250px;
+            gap: 1.5rem;
+            padding: 5rem 10%;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: sepia(12%) saturate(88%);
+        }
+        .gallery-item:hover .gallery-img { transform: scale(1.05); }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .gallery-item:hover .gallery-caption { opacity: 1; }
+
+        /* Visitor Info */
+        .visitor-info {
+            background-color: var(--deep);
+            color: var(--parchment);
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border: 1px solid rgba(212, 168, 67, 0.1);
+        }
+        .info-card h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--night);
+            color: var(--parchment);
+            padding: 4rem 10% 2rem;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-nav a {
+            color: var(--ivory);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            margin-left: 2rem;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .intro-strip, .city-grid, .info-grid, .map-grid { grid-template-columns: 1fr; }
+            .city-grid.mirror { grid-template-columns: 1fr; }
+            .city-grid.mirror .monuments-list { order: 2; }
+            .city-grid.mirror .city-description { order: 1; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .city-banner h2 { font-size: 3rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">LANKA HERITAGE</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#anuradhapura">Anuradhapura</a>
+            <a href="#polonnaruwa">Polonnaruwa</a>
+            <a href="#locations">Locations</a>
+            <a href="#visitor-info">Visitor Info</a>
+            <a href="kandy.html">Kandy →</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content reveal">
+            <span class="eyebrow">UNESCO World Heritage Sites</span>
+            <h1>The Ancient<br><span>Sacred Cities</span></h1>
+        </div>
+    </header>
+
+    <section class="intro-strip reveal">
+        <div class="intro-content">
+            <span class="section-label">Legacy of the Kings</span>
+            <h2 class="section-title">Kingdoms That<br>Shaped Asia</h2>
+            <div class="divider"></div>
+            <p>For over fifteen centuries, the northern plains of Sri Lanka were the center of a brilliant Buddhist civilization. The sacred cities of Anuradhapura and Polonnaruwa served as the seats of power for successive dynasties, creating a legacy of architectural grandeur and engineering marvels.</p>
+            <p>From the world's tallest brick structures to sophisticated irrigation systems that still water the fields today, these kingdoms represent the zenith of ancient South Asian culture and spirituality.</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-num">2,300+</span>
+                <span class="stat-label">Years of History</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">2</span>
+                <span class="stat-label">UNESCO Sites</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">40 km²</span>
+                <span class="stat-label">Sacred City Area</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-num">1982</span>
+                <span class="stat-label">UNESCO Designation</span>
+            </div>
+        </div>
+    </section>
+
+    <div id="anuradhapura" class="city-banner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Anuradhapura_Ruwanwelisaya_stupa.jpg/1280px-Anuradhapura_Ruwanwelisaya_stupa.jpg" alt="Anuradhapura" class="city-banner-img">
+        <div class="city-banner-content reveal">
+            <h2>Anuradhapura</h2>
+            <p class="city-period">Kingdom Founded c.380 BC — Capital for 1,400 Years</p>
+        </div>
+    </div>
+
+    <div class="city-grid">
+        <div class="city-description reveal">
+            <h3 class="section-title">The First Sacred Capital</h3>
+            <p>Anuradhapura was the first capital of ancient Sri Lanka and remains one of the world's major Buddhist pilgrimage sites. Founded in the 4th century BC, it grew into a sprawling metropolis, centered around massive stupas and monastic complexes.</p>
+            <p>The city's layout was a masterpiece of urban planning, integrating spiritual monuments with an advanced hydraulic system of man-made reservoirs (wewas) and canals. These waters sustained a population that reached into the hundreds of thousands at its peak.</p>
+            <p>Today, the ruins offer a window into a time when Sri Lanka was a beacon of Buddhist learning, attracting scholars and pilgrims from across the Silk Road.</p>
+        </div>
+        <div class="monuments-list reveal">
+            <div class="monument-card">
+                <h4>Ruwanwelisaya Stupa</h4>
+                <span class="location-pill">📍 8.3490°N 80.3965°E · Anuradhapura</span>
+                <p>A hemispherical structure and a marvel of ancient engineering, standing as one of the world's tallest monuments of antiquity.</p>
+            </div>
+            <div class="monument-card">
+                <h4>Sri Maha Bodhi</h4>
+                <span class="location-pill">📍 8.3453°N 80.3961°E · Anuradhapura</span>
+                <p>The oldest documented tree in the world, grown from a sapling of the original Bodhi tree under which Buddha attained enlightenment.</p>
+            </div>
+            <div class="monument-card">
+                <h4>Jetavanaramaya</h4>
+                <span class="location-pill">📍 8.3511°N 80.4003°E · Anuradhapura</span>
+                <p>Once the third tallest structure in the ancient world, after the Great Pyramids, this massive brick stupa remains a breathtaking sight.</p>
+            </div>
+            <div class="monument-card">
+                <h4>Thuparamaya</h4>
+                <span class="location-pill">📍 8.3480°N 80.3950°E · Anuradhapura</span>
+                <p>The first Buddhist stupa built in Sri Lanka after the introduction of Buddhism, known for its elegant concentric stone pillars.</p>
+            </div>
+            <div class="monument-card">
+                <h4>Twin Ponds (Kuttam Pokuna)</h4>
+                <span class="location-pill">📍 8.3522°N 80.3978°E · Anuradhapura</span>
+                <p>Considered one of the best specimen of bathing tanks or pools in ancient Sri Lanka, showcasing sophisticated filtration and drainage.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="color-separator"></div>
+
+    <div id="polonnaruwa" class="city-banner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Gal_Vihara_Polonnaruwa.jpg/1280px-Gal_Vihara_Polonnaruwa.jpg" alt="Polonnaruwa" class="city-banner-img">
+        <div class="city-banner-content reveal">
+            <h2>Polonnaruwa</h2>
+            <p class="city-period">Medieval Capital c.993–1310 AD</p>
+        </div>
+    </div>
+
+    <div class="city-grid mirror">
+        <div class="monuments-list reveal">
+            <div class="monument-card">
+                <h4>Gal Vihara</h4>
+                <span class="location-pill">📍 7.9420°N 81.0020°E · Polonnaruwa</span>
+                <p>A rock temple of the Buddha where four colossal statues were carved out of a single granite rock face.</p>
+            </div>
+            <div class="monument-card">
+                <h4>Parakrama Samudra</h4>
+                <span class="location-pill">📍 7.9385°N 80.9893°E · Polonnaruwa</span>
+                <p>A massive man-made lake so large it was named the "Sea of Parakrama," a testament to ancient irrigation mastery.</p>
+            </div>
+            <div class="monument-card">
+                <h4>Lankatilaka</h4>
+                <span class="location-pill">📍 7.9318°N 80.9931°E · Polonnaruwa</span>
+                <p>An enormous brick image house with walls soaring 17 meters high, housing a headless but still imposing Buddha statue.</p>
+            </div>
+            <div class="monument-card">
+                <h4>Vatadage</h4>
+                <span class="location-pill">📍 7.9397°N 80.9998°E · Polonnaruwa</span>
+                <p>A circular relic house featuring intricate stone carvings and guard stones, considered one of the most beautiful ruins in the country.</p>
+            </div>
+            <div class="monument-card">
+                <h4>Royal Palace of Parakramabahu</h4>
+                <span class="location-pill">📍 7.9371°N 80.9971°E · Polonnaruwa</span>
+                <p>A multi-story structure that once boasted 1,000 rooms, now standing as impressive brick ruins of a royal past.</p>
+            </div>
+        </div>
+        <div class="city-description reveal">
+            <h3 class="section-title">The Medieval Stronghold</h3>
+            <p>After the fall of Anuradhapura, Polonnaruwa became the second capital of Sri Lanka. It reached its zenith under King Parakramabahu I, who transformed the city into a magnificent garden city and irrigation hub.</p>
+            <p>Unlike the sprawling nature of Anuradhapura, Polonnaruwa is more compact, with its major monuments clustered together, showcasing a blend of Buddhist and Hindu architectural influences.</p>
+            <p>The city's preservation is remarkable, allowing visitors to walk through the royal council chambers, library, and sacred quadrangles almost as they appeared eight centuries ago.</p>
+        </div>
+    </div>
+
+    <section class="gallery">
+        <span class="section-label">Visual Heritage</span>
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="divider"></div>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Gal_Vihara_Polonnaruwa.jpg/800px-Gal_Vihara_Polonnaruwa.jpg" alt="Gal Vihara" class="gallery-img">
+                <div class="gallery-caption">Gal Vihara Rock Temple</div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Anuradhapura_Ruwanwelisaya_stupa.jpg/600px-Anuradhapura_Ruwanwelisaya_stupa.jpg" alt="Ruwanwelisaya" class="gallery-img">
+                <div class="gallery-caption">Ruwanwelisaya Stupa</div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Vatadage_Polonnaruwa.jpg/600px-Vatadage_Polonnaruwa.jpg" alt="Vatadage" class="gallery-img">
+                <div class="gallery-caption">Polonnaruwa Vatadage</div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Isurumuniya_Lovers.JPG/600px-Isurumuniya_Lovers.JPG" alt="Isurumuniya" class="gallery-img">
+                <div class="gallery-caption">Isurumuniya Lovers Rock Carving</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="locations" class="map-section reveal">
+        <span class="section-label">Locations</span>
+        <h2 class="section-title">Find Your Way</h2>
+        <div class="divider"></div>
+
+        <h3 class="map-subsection-title">Anuradhapura</h3>
+        <div class="map-grid grid-3">
+            <!-- Ruwanwelisaya -->
+            <div class="map-card reveal">
+                <h4>Ruwanwelisaya Stupa</h4>
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=80.3885,8.3430,80.4045,8.3550&layer=mapnik&marker=8.3490,80.3965"
+                    width="100%" height="300"
+                    loading="lazy"
+                    title="Map of Ruwanwelisaya Stupa">
+                </iframe>
+                <div class="map-details">
+                    <span class="coords">8.3490°N, 80.3965°E</span>
+                    Sacred City of Anuradhapura, North Central Province
+                </div>
+            </div>
+            <!-- Sri Maha Bodhi -->
+            <div class="map-card reveal">
+                <h4>Sri Maha Bodhi</h4>
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=80.3881,8.3393,80.4041,8.3513&layer=mapnik&marker=8.3453,80.3961"
+                    width="100%" height="300"
+                    loading="lazy"
+                    title="Map of Sri Maha Bodhi">
+                </iframe>
+                <div class="map-details">
+                    <span class="coords">8.3453°N, 80.3961°E</span>
+                    Mahamewna Gardens, Anuradhapura
+                </div>
+            </div>
+            <!-- Jetavanaramaya -->
+            <div class="map-card reveal">
+                <h4>Jetavanaramaya Stupa</h4>
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=80.3923,8.3451,80.4083,8.3571&layer=mapnik&marker=8.3511,80.4003"
+                    width="100%" height="300"
+                    loading="lazy"
+                    title="Map of Jetavanaramaya Stupa">
+                </iframe>
+                <div class="map-details">
+                    <span class="coords">8.3511°N, 80.4003°E</span>
+                    Jetavana Monastery, Anuradhapura
+                </div>
+            </div>
+        </div>
+
+        <h3 class="map-subsection-title">Polonnaruwa</h3>
+        <div class="map-grid grid-2x2">
+            <!-- Gal Vihara -->
+            <div class="map-card reveal">
+                <h4>Gal Vihara</h4>
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=80.9940,7.9360,81.0100,7.9480&layer=mapnik&marker=7.9420,81.0020"
+                    width="100%" height="300"
+                    loading="lazy"
+                    title="Map of Gal Vihara">
+                </iframe>
+                <div class="map-details">
+                    <span class="coords">7.9420°N, 81.0020°E</span>
+                    Ancient City of Polonnaruwa, North Central Province
+                </div>
+            </div>
+            <!-- Vatadage -->
+            <div class="map-card reveal">
+                <h4>Vatadage</h4>
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=80.9918,7.9337,81.0078,7.9457&layer=mapnik&marker=7.9397,80.9998"
+                    width="100%" height="300"
+                    loading="lazy"
+                    title="Map of Vatadage">
+                </iframe>
+                <div class="map-details">
+                    <span class="coords">7.9397°N, 80.9998°E</span>
+                    Quadrangle, Ancient City of Polonnaruwa
+                </div>
+            </div>
+            <!-- Parakrama Samudra -->
+            <div class="map-card reveal">
+                <h4>Parakrama Samudra</h4>
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=80.9813,7.9325,80.9973,7.9445&layer=mapnik&marker=7.9385,80.9893"
+                    width="100%" height="300"
+                    loading="lazy"
+                    title="Map of Parakrama Samudra">
+                </iframe>
+                <div class="map-details">
+                    <span class="coords">7.9385°N, 80.9893°E</span>
+                    Polonnaruwa, North Central Province
+                </div>
+            </div>
+            <!-- Lankatilaka -->
+            <div class="map-card reveal">
+                <h4>Lankatilaka Image House</h4>
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=80.9851,7.9258,81.0011,7.9378&layer=mapnik&marker=7.9318,80.9931"
+                    width="100%" height="300"
+                    loading="lazy"
+                    title="Map of Lankatilaka Image House">
+                </iframe>
+                <div class="map-details">
+                    <span class="coords">7.9318°N, 80.9931°E</span>
+                    Ancient City of Polonnaruwa
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visitor-info" class="visitor-info">
+        <span class="section-label" style="color: var(--gold);">Plan Your Journey</span>
+        <h2 class="section-title" style="color: white;">Visitor Information</h2>
+        <div class="divider"></div>
+        <div class="info-grid">
+            <div class="info-card reveal">
+                <h4>Opening Hours</h4>
+                <p>Both sites are generally open from 7:00 AM to 6:00 PM daily. It's recommended to start early to avoid the midday heat.</p>
+            </div>
+            <div class="info-card reveal">
+                <h4>Entry Fees</h4>
+                <p>Tickets are required for both Anuradhapura and Polonnaruwa. SAARC country citizens receive a significant discount.</p>
+            </div>
+            <div class="info-card reveal">
+                <h4>Getting There</h4>
+                <p>Anuradhapura is accessible by train and bus from Colombo. Polonnaruwa is best reached by bus or private vehicle from Anuradhapura or Dambulla.</p>
+            </div>
+            <div class="info-card reveal">
+                <h4>Best Time</h4>
+                <p>The dry season from May to September is ideal for exploring the ruins, though early morning or late afternoon is best year-round.</p>
+            </div>
+            <div class="info-card reveal">
+                <h4>Dress Code</h4>
+                <p>These are sacred sites. Please wear clothing that covers shoulders and knees. Hats and shoes must be removed when entering temple grounds.</p>
+            </div>
+            <div class="info-card reveal">
+                <h4>Travel Tips</h4>
+                <p>Rent a bicycle to explore Polonnaruwa; it's the most enjoyable way to see the ruins. Carry plenty of water and sun protection.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <a href="index.html" class="logo">LANKA HERITAGE</a>
+            <div class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="kandy.html">Kandy →</a>
+            </div>
+        </div>
+        <p style="text-align: center; font-size: 0.8rem; color: var(--smoke);">Historical Sites of Sri Lanka — Group Mini Project</p>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('visible'), i * 90);
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        reveals.forEach(r => io.observe(r));
+    </script>
+</body>
+</html>
