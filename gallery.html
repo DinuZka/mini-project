@@ -630,6 +630,7 @@
         <a href="blog.html">Blog</a>
         <a href="ancient-cities.html">Ancient Cities</a>
         <a href="kandy.html">Kandy</a>
+        <a href="contact.html">Contact</a>
       </div>
     </nav>
 
@@ -850,7 +851,7 @@
         >
           <div class="card-img-wrap">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Lankathilaka_Vhihara_-_Le_temple.JPG/500px-Lankathilaka_Vhihara_-_Le_temple.JPG    "
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Lankathilaka_Vhihara_-_Le_temple.JPG/500px-Lankathilaka_Vhihara_-_Le_temple.JPG"
               alt="Lankatilaka"
               loading="lazy"
             />
@@ -1174,6 +1175,7 @@
           <a href="blog.html">Blog</a>
           <a href="ancient-cities.html">Ancient Cities</a>
           <a href="kandy.html">Kandy</a>
+          <a href="contact.html">Contact</a>
         </div>
         <span class="footer-tagline">Preserving the echoes of the past.</span>
       </div>
@@ -1224,12 +1226,13 @@
         let count = 0;
         cards.forEach((card) => {
           if (filter === "all" || card.dataset.category === filter) {
+            card.style.display = "block";
             card.style.opacity = "1";
             card.style.transform = "scale(1)";
             card.style.pointerEvents = "auto";
-            card.style.position = "relative";
             count++;
           } else {
+            card.style.display = "none";
             card.style.opacity = "0";
             card.style.transform = "scale(0.95)";
             card.style.pointerEvents = "none";
