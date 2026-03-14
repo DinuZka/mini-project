@@ -40,9 +40,7 @@
         overflow-x: hidden;
       }
 
-      /* ── Navbar ── */
-
-      /* ── Hamburger (BUG FIX #1) ── */
+      /* ── Hamburger ── */
       .hamburger {
         display: none;
         flex-direction: column;
@@ -153,7 +151,7 @@
         margin-bottom: 1rem;
       }
 
-      /* ── Sections ── */
+      /* ── Generic section ── */
       section {
         padding: 7rem 10%;
         position: relative;
@@ -244,6 +242,89 @@
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--stone);
+      }
+
+      /* ════════════════════════════════════
+         CITY TABS
+      ════════════════════════════════════ */
+      .city-tabs-wrapper {
+        background: var(--deep);
+        position: sticky;
+        padding-top: 80px;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+      }
+      .city-tabs {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .city-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .city-tab {
+        flex: 1;
+        max-width: 260px;
+        padding: 1.4rem 2rem;
+        background: none;
+        border: none;
+        border-bottom: 3px solid transparent;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        transition:
+          background 0.3s ease,
+          border-color 0.3s ease;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+      }
+      .city-tab::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(212, 168, 67, 0.06);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .city-tab:hover::before {
+        opacity: 1;
+      }
+      .city-tab.active {
+        border-bottom-color: var(--gold);
+        background: rgba(212, 168, 67, 0.08);
+      }
+      .tab-name {
+        font-family: "Cinzel", serif;
+        color: var(--ivory);
+        font-size: clamp(0.75rem, 2vw, 0.95rem);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .city-tab.active .tab-name {
+        color: var(--gold);
+      }
+      .tab-sub {
+        font-family: "Crimson Pro", serif;
+        color: var(--stone);
+        font-size: 0.75rem;
+        white-space: nowrap;
+        font-style: italic;
+      }
+
+      /* ── City panels ── */
+      .city-panel {
+        display: none;
+      }
+      .city-panel.active {
+        display: block;
       }
 
       /* ── City Banners ── */
@@ -363,12 +444,23 @@
         gap: 2rem;
         margin-bottom: 4rem;
       }
-      /* BUG FIX #3 — grid column classes now responsive */
       .grid-3 {
         grid-template-columns: repeat(3, 1fr);
       }
       .grid-2x2 {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .grid-kandy {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      .grid-kandy .map-card {
+        grid-column: span 2;
+      }
+      .grid-kandy .map-card:nth-child(4) {
+        grid-column: 2 / span 2;
+      }
+      .grid-kandy .map-card:nth-child(5) {
+        grid-column: 4 / span 2;
       }
 
       .map-card {
@@ -421,12 +513,11 @@
         );
       }
 
-      /* ── Gallery (BUG FIX #5 — removed double padding) ── */
+      /* ── Gallery ── */
       .gallery {
         padding: 7rem 10%;
       }
       .gallery-grid {
-        /* BUG FIX #5 — removed padding: 5rem 10% that caused double padding */
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 250px;
@@ -437,7 +528,6 @@
         position: relative;
         overflow: hidden;
       }
-      /* BUG FIX #2 — span only applies on larger screens (see media queries) */
       .gallery-item:first-child {
         grid-column: span 2;
         grid-row: span 2;
@@ -491,6 +581,225 @@
         letter-spacing: 0.1em;
       }
 
+      /* ── Kandy-specific ── */
+      .pull-quote {
+        background-color: var(--crimson);
+        color: var(--parchment);
+        text-align: center;
+        padding: 6rem 15%;
+        position: relative;
+        overflow: hidden;
+      }
+      .pull-quote::before {
+        content: '"';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30rem;
+        font-family: "Cormorant Garamond", serif;
+        color: rgba(255, 255, 255, 0.04);
+        line-height: 1;
+      }
+      .quote-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.2rem;
+        font-style: italic;
+        margin-bottom: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+      .attribution {
+        font-family: "Cinzel", serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        color: var(--gold);
+        position: relative;
+        z-index: 1;
+      }
+
+      .kandy-intro {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+      .intro-img-frame {
+        position: relative;
+        padding: 20px;
+      }
+      .intro-img-frame::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80%;
+        height: 80%;
+        border: 2px solid var(--gold);
+        z-index: -1;
+      }
+      .intro-img {
+        width: 100%;
+        display: block;
+        filter: sepia(12%) saturate(88%);
+      }
+
+      /* Timeline */
+      .timeline-section {
+        background-color: var(--deep);
+        color: var(--parchment);
+      }
+      .timeline-container {
+        position: relative;
+        max-width: 800px;
+        margin: 4rem auto 0;
+        padding-left: 3rem;
+      }
+      .timeline-line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--gold), transparent);
+      }
+      .timeline-entry {
+        position: relative;
+        margin-bottom: 4rem;
+        opacity: 0;
+        transform: translateX(-30px);
+        transition: all 0.8s ease;
+      }
+      .timeline-entry.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .timeline-dot {
+        position: absolute;
+        left: -3rem;
+        top: 0.5rem;
+        width: 12px;
+        height: 12px;
+        background-color: var(--gold);
+        border-radius: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 15px var(--gold);
+      }
+      .year-label {
+        font-family: "Cinzel", serif;
+        color: var(--gold);
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+      .event-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        color: white;
+      }
+
+      /* Temple section */
+      .temple-section {
+        background-color: var(--parchment);
+      }
+      .temple-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        align-items: start;
+      }
+      .feature-block {
+        margin-bottom: 2.5rem;
+      }
+      .feature-label {
+        font-family: "Cinzel", serif;
+        color: var(--rust);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.5rem;
+        display: block;
+        text-transform: uppercase;
+      }
+
+      /* Festivals */
+      .festivals-section {
+        background-color: var(--ivory);
+      }
+      .perahera-banner {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        margin: 3rem 0;
+        filter: sepia(12%) saturate(88%);
+      }
+      .festival-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+      }
+      .festival-card {
+        background: white;
+        padding: 2rem;
+        border-top: 4px solid var(--crimson);
+        transition: transform 0.3s ease;
+      }
+      .festival-card:hover {
+        transform: translateY(-10px);
+      }
+      .festival-card h4 {
+        font-family: "Cinzel", serif;
+        margin-bottom: 1rem;
+        color: var(--deep);
+      }
+
+      /* Significance */
+      .significance {
+        background-color: var(--night);
+        color: var(--parchment);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+      .sig-col {
+        padding: 5rem 3rem;
+        position: relative;
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .sig-col:last-child {
+        border-right: none;
+      }
+      .sig-num {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        font-family: "Cinzel", serif;
+        font-size: 4rem;
+        color: rgba(255, 255, 255, 0.15);
+        line-height: 1;
+      }
+      .sig-content {
+        position: relative;
+        z-index: 1;
+      }
+      .sig-content h4 {
+        font-family: "Cinzel", serif;
+        margin-bottom: 1.5rem;
+        color: var(--gold);
+      }
+
+      /* Kandy visitor info uses crimson bg */
+      .visitor-info-kandy {
+        background-color: var(--crimson);
+        color: var(--parchment);
+        padding: 7rem 10%;
+      }
+      .visitor-info-kandy .info-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
       /* ── Footer ── */
       footer {
         background-color: var(--night);
@@ -501,7 +810,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap; /* BUG FIX #4 */
+        flex-wrap: wrap;
         gap: 1.5rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         padding-bottom: 2rem;
@@ -518,12 +827,17 @@
         font-family: "Cinzel", serif;
         font-size: 0.8rem;
       }
+      .logo {
+        font-family: "Cinzel", serif;
+        color: var(--ivory);
+        text-decoration: none;
+        font-size: 1.1rem;
+        letter-spacing: 0.15em;
+      }
 
       /* ══════════════════════════════════════
-         RESPONSIVE BREAKPOINTS
+         RESPONSIVE
       ══════════════════════════════════════ */
-
-      /* Tablet — 900px */
       @media (max-width: 900px) {
         .intro-strip {
           grid-template-columns: 1fr;
@@ -541,67 +855,76 @@
         .city-grid.mirror .city-description {
           order: 1;
         }
-
-        /* BUG FIX #3 — map grids collapse to 1 col on tablet */
         .grid-3 {
           grid-template-columns: 1fr 1fr;
         }
         .grid-2x2 {
           grid-template-columns: 1fr 1fr;
         }
-
+        .grid-kandy {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+        .grid-kandy .map-card {
+          grid-column: span 1 !important;
+        }
         .info-grid {
           grid-template-columns: 1fr 1fr;
         }
-
         .gallery-grid {
           grid-template-columns: 1fr 1fr;
           grid-auto-rows: 200px;
         }
+        .kandy-intro,
+        .temple-grid {
+          grid-template-columns: 1fr;
+        }
+        .festival-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .significance {
+          grid-template-columns: 1fr;
+        }
+        .sig-col {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
       }
-
-      /* Mobile — 600px */
       @media (max-width: 600px) {
         section {
           padding: 4rem 5%;
         }
-
-        /* BUG FIX #1 — show hamburger, hide desktop nav */
         .nav-links {
           display: none;
         }
         .hamburger {
           display: flex;
         }
-
         .hero {
           height: 70vh;
         }
-
         .eyebrow {
           font-size: 0.7rem;
           letter-spacing: 0.15em;
         }
-
         .city-banner {
           height: 45vh;
         }
         .city-banner h2 {
           font-size: 2.4rem;
         }
-
         .city-grid,
         .city-grid.mirror {
           padding: 2.5rem 5%;
           gap: 2rem;
         }
-
-        /* BUG FIX #3 — single col maps on mobile */
         .grid-3,
-        .grid-2x2 {
-          grid-template-columns: 1fr;
+        .grid-2x2,
+        .grid-kandy {
+          grid-template-columns: 1fr !important;
         }
-
+        .grid-kandy .map-card {
+          grid-column: span 1 !important;
+        }
         .stats-grid {
           grid-template-columns: 1fr 1fr;
           gap: 1rem;
@@ -612,15 +935,12 @@
         .stat-num {
           font-size: 2.2rem;
         }
-
         .info-grid {
           grid-template-columns: 1fr;
         }
         .info-card {
           padding: 1.5rem;
         }
-
-        /* BUG FIX #2 — no spanning on mobile gallery */
         .gallery {
           padding: 4rem 5%;
         }
@@ -632,8 +952,6 @@
           grid-column: span 1;
           grid-row: span 1;
         }
-
-        /* BUG FIX #4 — footer stacks on mobile */
         .footer-content {
           flex-direction: column;
           align-items: flex-start;
@@ -641,13 +959,28 @@
         .footer-nav {
           margin-left: 0;
         }
-
         .map-subsection-title {
           font-size: 0.9rem;
         }
+        .city-tab {
+          padding: 1rem 1rem;
+        }
+        .tab-sub {
+          display: none;
+        }
+        .festival-cards {
+          grid-template-columns: 1fr;
+        }
+        .quote-text {
+          font-size: 1.5rem;
+        }
+        .pull-quote {
+          padding: 4rem 8%;
+        }
+        .kandy-intro {
+          gap: 2.5rem;
+        }
       }
-
-      /* Extra small — 380px */
       @media (max-width: 380px) {
         .stats-grid {
           grid-template-columns: 1fr;
@@ -662,7 +995,7 @@
   <body>
     <div id="navbar"></div>
 
-    <!-- ── Mobile Nav Drawer ── -->
+    <!-- Mobile Nav Drawer -->
     <nav
       class="mobile-nav"
       id="mobileNav"
@@ -678,6 +1011,7 @@
       <a href="contact.html" onclick="closeMobileNav()">Contact</a>
     </nav>
 
+    <!-- Hero -->
     <header class="hero">
       <div class="hero-bg"></div>
       <div class="hero-content reveal">
@@ -686,22 +1020,22 @@
       </div>
     </header>
 
+    <!-- Intro Strip -->
     <section class="intro-strip reveal">
       <div class="intro-content">
         <span class="section-label">Legacy of the Kings</span>
         <h2 class="section-title">Kingdoms That<br />Shaped Asia</h2>
         <div class="divider"></div>
         <p>
-          For over fifteen centuries, the northern plains of Sri Lanka were the
-          center of a brilliant Buddhist civilization. The sacred cities of
-          Anuradhapura and Polonnaruwa served as the seats of power for
-          successive dynasties, creating a legacy of architectural grandeur and
-          engineering marvels.
+          For over fifteen centuries, the northern plains and central highlands
+          of Sri Lanka were the center of a brilliant Buddhist civilization. The
+          sacred cities of Anuradhapura, Polonnaruwa, and Kandy served as seats
+          of power for successive dynasties.
         </p>
         <p style="margin-top: 1rem">
-          From the world's tallest brick structures to sophisticated irrigation
-          systems that still water the fields today, these kingdoms represent
-          the zenith of ancient South Asian culture and spirituality.
+          From the world's tallest brick structures to the Temple of the Sacred
+          Tooth Relic, these kingdoms represent the zenith of ancient South
+          Asian culture, engineering, and spirituality.
         </p>
       </div>
       <div class="stats-grid">
@@ -710,7 +1044,7 @@
           <span class="stat-label">Years of History</span>
         </div>
         <div class="stat-card">
-          <span class="stat-num">2</span>
+          <span class="stat-num">3</span>
           <span class="stat-label">UNESCO Sites</span>
         </div>
         <div class="stat-card">
@@ -718,383 +1052,977 @@
           <span class="stat-label">Sacred City Area</span>
         </div>
         <div class="stat-card">
-          <span class="stat-num">1982</span>
+          <span class="stat-num">1982–88</span>
           <span class="stat-label">UNESCO Designation</span>
         </div>
       </div>
     </section>
 
-    <div id="anuradhapura" class="city-banner">
-      <img
-        src="images/anuradhapura-2.webp"
-        alt="Anuradhapura"
-        class="city-banner-img"
-      />
-      <div class="city-banner-content reveal">
-        <h2>Anuradhapura</h2>
-        <p class="city-period">
-          Kingdom Founded c.380 BC — Capital for 1,400 Years
-        </p>
+    <!-- ════════════════════════════════════
+         CITY TABS
+    ════════════════════════════════════ -->
+    <div class="city-tabs-wrapper">
+      <div class="city-tabs" role="tablist" aria-label="Select a city">
+        <button
+          class="city-tab active"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-anuradhapura"
+          id="tab-anuradhapura"
+          onclick="switchCity('anuradhapura')"
+        >
+          <span class="tab-name">Anuradhapura</span>
+          <span class="tab-sub">c.380 BC — Capital 1,400 yrs</span>
+        </button>
+        <button
+          class="city-tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-polonnaruwa"
+          id="tab-polonnaruwa"
+          onclick="switchCity('polonnaruwa')"
+        >
+          <span class="tab-name">Polonnaruwa</span>
+          <span class="tab-sub">Medieval Capital 993–1310 AD</span>
+        </button>
+        <button
+          class="city-tab"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-kandy"
+          id="tab-kandy"
+          onclick="switchCity('kandy')"
+        >
+          <span class="tab-name">Kandy</span>
+          <span class="tab-sub">Last Royal Capital · 1592–1815</span>
+        </button>
       </div>
     </div>
 
-    <div class="city-grid">
-      <div class="city-description reveal">
-        <h3 class="section-title">The First Sacred Capital</h3>
-        <p>
-          Anuradhapura was the first capital of ancient Sri Lanka and remains
-          one of the world's major Buddhist pilgrimage sites. Founded in the 4th
-          century BC, it grew into a sprawling metropolis, centered around
-          massive stupas and monastic complexes.
-        </p>
-        <p style="margin-top: 1rem">
-          The city's layout was a masterpiece of urban planning, integrating
-          spiritual monuments with an advanced hydraulic system of man-made
-          reservoirs (wewas) and canals. These waters sustained a population
-          that reached into the hundreds of thousands at its peak.
-        </p>
-        <p style="margin-top: 1rem">
-          Today, the ruins offer a window into a time when Sri Lanka was a
-          beacon of Buddhist learning, attracting scholars and pilgrims from
-          across the Silk Road.
-        </p>
-      </div>
-      <div class="monuments-list reveal">
-        <div class="monument-card">
-          <h4>Ruwanwelisaya Stupa</h4>
-          <span class="location-pill"
-            >📍 8.3490°N 80.3965°E · Anuradhapura</span
-          >
-          <p>
-            A hemispherical structure and a marvel of ancient engineering,
-            standing as one of the world's tallest monuments of antiquity.
-          </p>
-        </div>
-        <div class="monument-card">
-          <h4>Sri Maha Bodhi</h4>
-          <span class="location-pill"
-            >📍 8.3453°N 80.3961°E · Anuradhapura</span
-          >
-          <p>
-            The oldest documented tree in the world, grown from a sapling of the
-            original Bodhi tree under which Buddha attained enlightenment.
-          </p>
-        </div>
-        <div class="monument-card">
-          <h4>Jetavanaramaya</h4>
-          <span class="location-pill"
-            >📍 8.3511°N 80.4003°E · Anuradhapura</span
-          >
-          <p>
-            Once the third tallest structure in the ancient world, after the
-            Great Pyramids, this massive brick stupa remains a breathtaking
-            sight.
-          </p>
-        </div>
-        <div class="monument-card">
-          <h4>Thuparamaya</h4>
-          <span class="location-pill"
-            >📍 8.3480°N 80.3950°E · Anuradhapura</span
-          >
-          <p>
-            The first Buddhist stupa built in Sri Lanka after the introduction
-            of Buddhism, known for its elegant concentric stone pillars.
-          </p>
-        </div>
-        <div class="monument-card">
-          <h4>Twin Ponds (Kuttam Pokuna)</h4>
-          <span class="location-pill"
-            >📍 8.3522°N 80.3978°E · Anuradhapura</span
-          >
-          <p>
-            Considered one of the best specimen of bathing tanks in ancient Sri
-            Lanka, showcasing sophisticated filtration and drainage.
+    <!-- ════════════════════════════
+         PANEL: ANURADHAPURA
+    ════════════════════════════ -->
+    <div
+      id="panel-anuradhapura"
+      class="city-panel active"
+      role="tabpanel"
+      aria-labelledby="tab-anuradhapura"
+    >
+      <div id="anuradhapura" class="city-banner">
+        <img
+          src="images/anuradhapura-2.webp"
+          alt="Anuradhapura"
+          class="city-banner-img"
+        />
+        <div class="city-banner-content reveal">
+          <h2>Anuradhapura</h2>
+          <p class="city-period">
+            Kingdom Founded c.380 BC — Capital for 1,400 Years
           </p>
         </div>
       </div>
+
+      <div class="city-grid">
+        <div class="city-description reveal">
+          <h3 class="section-title">The First Sacred Capital</h3>
+          <p>
+            Anuradhapura was the first capital of ancient Sri Lanka and remains
+            one of the world's major Buddhist pilgrimage sites. Founded in the
+            4th century BC, it grew into a sprawling metropolis centered around
+            massive stupas and monastic complexes.
+          </p>
+          <p style="margin-top: 1rem">
+            The city's layout was a masterpiece of urban planning, integrating
+            spiritual monuments with an advanced hydraulic system of man-made
+            reservoirs (wewas) and canals. These waters sustained a population
+            that reached into the hundreds of thousands at its peak.
+          </p>
+          <p style="margin-top: 1rem">
+            Today, the ruins offer a window into a time when Sri Lanka was a
+            beacon of Buddhist learning, attracting scholars and pilgrims from
+            across the Silk Road.
+          </p>
+        </div>
+        <div class="monuments-list reveal">
+          <div class="monument-card">
+            <h4>Ruwanwelisaya Stupa</h4>
+            <span class="location-pill"
+              >📍 8.3490°N 80.3965°E · Anuradhapura</span
+            >
+            <p>
+              A hemispherical structure and a marvel of ancient engineering,
+              standing as one of the world's tallest monuments of antiquity.
+            </p>
+          </div>
+          <div class="monument-card">
+            <h4>Sri Maha Bodhi</h4>
+            <span class="location-pill"
+              >📍 8.3453°N 80.3961°E · Anuradhapura</span
+            >
+            <p>
+              The oldest documented tree in the world, grown from a sapling of
+              the original Bodhi tree under which Buddha attained enlightenment.
+            </p>
+          </div>
+          <div class="monument-card">
+            <h4>Jetavanaramaya</h4>
+            <span class="location-pill"
+              >📍 8.3511°N 80.4003°E · Anuradhapura</span
+            >
+            <p>
+              Once the third tallest structure in the ancient world, after the
+              Great Pyramids, this massive brick stupa remains a breathtaking
+              sight.
+            </p>
+          </div>
+          <div class="monument-card">
+            <h4>Thuparamaya</h4>
+            <span class="location-pill"
+              >📍 8.3480°N 80.3950°E · Anuradhapura</span
+            >
+            <p>
+              The first Buddhist stupa built in Sri Lanka after the introduction
+              of Buddhism, known for its elegant concentric stone pillars.
+            </p>
+          </div>
+          <div class="monument-card">
+            <h4>Twin Ponds (Kuttam Pokuna)</h4>
+            <span class="location-pill"
+              >📍 8.3522°N 80.3978°E · Anuradhapura</span
+            >
+            <p>
+              Considered one of the best specimen of bathing tanks in ancient
+              Sri Lanka, showcasing sophisticated filtration and drainage.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <section class="gallery">
+        <span class="section-label">Visual Heritage</span>
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="divider"></div>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal">
+            <img
+              src="images/ruwanwelisaya.webp"
+              alt="Ruwanwelisaya"
+              class="gallery-img"
+            />
+            <div class="gallery-caption">Ruwanwelisaya Stupa</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img
+              src="images/anuradhapura-2.webp"
+              alt="Anuradhapura"
+              class="gallery-img"
+            />
+            <div class="gallery-caption">Ancient City of Anuradhapura</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img
+              src="images/isurumuniya.webp"
+              alt="Isurumuniya"
+              class="gallery-img"
+            />
+            <div class="gallery-caption">Isurumuniya Lovers Rock Carving</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img
+              src="images/vatadage.webp"
+              alt="Vatadage"
+              class="gallery-img"
+            />
+            <div class="gallery-caption">Ancient Stonework</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Maps -->
+      <section id="locations-anuradhapura" class="map-section reveal">
+        <span class="section-label">Locations</span>
+        <h2 class="section-title">Find Your Way</h2>
+        <div class="divider"></div>
+        <div class="map-grid grid-3">
+          <div class="map-card reveal">
+            <h4>Ruwanwelisaya Stupa</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.3885,8.3430,80.4045,8.3550&layer=mapnik&marker=8.3490,80.3965"
+              height="300"
+              loading="lazy"
+              title="Map of Ruwanwelisaya Stupa"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">8.3490°N, 80.3965°E</span>Sacred City of
+              Anuradhapura, North Central Province
+            </div>
+          </div>
+          <div class="map-card reveal">
+            <h4>Sri Maha Bodhi</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.3881,8.3393,80.4041,8.3513&layer=mapnik&marker=8.3453,80.3961"
+              height="300"
+              loading="lazy"
+              title="Map of Sri Maha Bodhi"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">8.3453°N, 80.3961°E</span>Mahamewna Gardens,
+              Anuradhapura
+            </div>
+          </div>
+          <div class="map-card reveal">
+            <h4>Jetavanaramaya Stupa</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.3923,8.3451,80.4083,8.3571&layer=mapnik&marker=8.3511,80.4003"
+              height="300"
+              loading="lazy"
+              title="Map of Jetavanaramaya Stupa"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">8.3511°N, 80.4003°E</span>Jetavana Monastery,
+              Anuradhapura
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visitor Info -->
+      <section id="visitor-info-anuradhapura" class="visitor-info">
+        <span class="section-label" style="color: var(--gold)"
+          >Plan Your Journey</span
+        >
+        <h2 class="section-title" style="color: white">Visitor Information</h2>
+        <div class="divider"></div>
+        <div class="info-grid">
+          <div class="info-card reveal">
+            <h4>Opening Hours</h4>
+            <p>
+              Generally open from 7:00 AM to 6:00 PM daily. Start early to avoid
+              the midday heat.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Entry Fees</h4>
+            <p>
+              Tickets required for entry. SAARC country citizens receive a
+              significant discount.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Getting There</h4>
+            <p>
+              Accessible by train and bus from Colombo. The journey takes
+              approximately 3–4 hours.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Best Time</h4>
+            <p>
+              The dry season from May to September is ideal; early morning or
+              late afternoon is best year-round.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Dress Code</h4>
+            <p>
+              Sacred sites require shoulders and knees covered. Hats and shoes
+              must be removed on temple grounds.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Travel Tips</h4>
+            <p>
+              Hire a bicycle or tuk-tuk to cover the vast site. Carry plenty of
+              water and sun protection.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
+    <!-- /panel-anuradhapura -->
 
-    <div class="color-separator"></div>
+    <!-- ════════════════════════
+         PANEL: POLONNARUWA
+    ════════════════════════ -->
+    <div
+      id="panel-polonnaruwa"
+      class="city-panel"
+      role="tabpanel"
+      aria-labelledby="tab-polonnaruwa"
+    >
+      <div class="color-separator"></div>
 
-    <div id="polonnaruwa" class="city-banner">
-      <img
-        src="images/polonnaruwa-2.webp"
-        alt="Polonnaruwa"
-        class="city-banner-img"
-      />
-      <div class="city-banner-content reveal">
-        <h2>Polonnaruwa</h2>
-        <p class="city-period">Medieval Capital c.993–1310 AD</p>
+      <div id="polonnaruwa" class="city-banner">
+        <img
+          src="images/polonnaruwa-2.webp"
+          alt="Polonnaruwa"
+          class="city-banner-img"
+        />
+        <div class="city-banner-content reveal">
+          <h2>Polonnaruwa</h2>
+          <p class="city-period">Medieval Capital c.993–1310 AD</p>
+        </div>
       </div>
+
+      <div class="city-grid mirror">
+        <div class="monuments-list reveal">
+          <div class="monument-card">
+            <h4>Gal Vihara</h4>
+            <span class="location-pill"
+              >📍 7.9420°N 81.0020°E · Polonnaruwa</span
+            >
+            <p>
+              A rock temple of the Buddha where four colossal statues were
+              carved out of a single granite rock face.
+            </p>
+          </div>
+          <div class="monument-card">
+            <h4>Parakrama Samudra</h4>
+            <span class="location-pill"
+              >📍 7.9385°N 80.9893°E · Polonnaruwa</span
+            >
+            <p>
+              A massive man-made lake so large it was named the "Sea of
+              Parakrama," a testament to ancient irrigation mastery.
+            </p>
+          </div>
+          <div class="monument-card">
+            <h4>Lankatilaka</h4>
+            <span class="location-pill"
+              >📍 7.9318°N 80.9931°E · Polonnaruwa</span
+            >
+            <p>
+              An enormous brick image house with walls soaring 17 meters high,
+              housing a headless but still imposing Buddha statue.
+            </p>
+          </div>
+          <div class="monument-card">
+            <h4>Vatadage</h4>
+            <span class="location-pill"
+              >📍 7.9397°N 80.9998°E · Polonnaruwa</span
+            >
+            <p>
+              A circular relic house featuring intricate stone carvings and
+              guard stones, considered one of the most beautiful ruins in the
+              country.
+            </p>
+          </div>
+          <div class="monument-card">
+            <h4>Royal Palace of Parakramabahu</h4>
+            <span class="location-pill"
+              >📍 7.9371°N 80.9971°E · Polonnaruwa</span
+            >
+            <p>
+              A multi-story structure that once boasted 1,000 rooms, now
+              standing as impressive brick ruins of a royal past.
+            </p>
+          </div>
+        </div>
+        <div class="city-description reveal">
+          <h3 class="section-title">The Medieval Stronghold</h3>
+          <p>
+            After the fall of Anuradhapura, Polonnaruwa became the second
+            capital of Sri Lanka. It reached its zenith under King Parakramabahu
+            I, who transformed the city into a magnificent garden city and
+            irrigation hub.
+          </p>
+          <p style="margin-top: 1rem">
+            Unlike the sprawling nature of Anuradhapura, Polonnaruwa is more
+            compact, with its major monuments clustered together, showcasing a
+            blend of Buddhist and Hindu architectural influences.
+          </p>
+          <p style="margin-top: 1rem">
+            The city's preservation is remarkable, allowing visitors to walk
+            through the royal council chambers, library, and sacred quadrangles
+            almost as they appeared eight centuries ago.
+          </p>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <section class="gallery">
+        <span class="section-label">Visual Heritage</span>
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="divider"></div>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal">
+            <img
+              src="images/gal-viharaya.webp"
+              alt="Gal Vihara"
+              class="gallery-img"
+            />
+            <div class="gallery-caption">Gal Vihara Rock Temple</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img
+              src="images/vatadage.webp"
+              alt="Vatadage"
+              class="gallery-img"
+            />
+            <div class="gallery-caption">Polonnaruwa Vatadage</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img
+              src="images/polonnaruwa-2.webp"
+              alt="Polonnaruwa"
+              class="gallery-img"
+            />
+            <div class="gallery-caption">Ancient City of Polonnaruwa</div>
+          </div>
+          <div class="gallery-item reveal">
+            <img
+              src="images/isurumuniya.webp"
+              alt="Isurumuniya"
+              class="gallery-img"
+            />
+            <div class="gallery-caption">Ancient Stone Carvings</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Maps -->
+      <section id="locations-polonnaruwa" class="map-section reveal">
+        <span class="section-label">Locations</span>
+        <h2 class="section-title">Find Your Way</h2>
+        <div class="divider"></div>
+        <div class="map-grid grid-2x2">
+          <div class="map-card reveal">
+            <h4>Gal Vihara</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.9940,7.9360,81.0100,7.9480&layer=mapnik&marker=7.9420,81.0020"
+              height="300"
+              loading="lazy"
+              title="Map of Gal Vihara"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">7.9420°N, 81.0020°E</span>Ancient City of
+              Polonnaruwa, North Central Province
+            </div>
+          </div>
+          <div class="map-card reveal">
+            <h4>Vatadage</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.9918,7.9337,81.0078,7.9457&layer=mapnik&marker=7.9397,80.9998"
+              height="300"
+              loading="lazy"
+              title="Map of Vatadage"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">7.9397°N, 80.9998°E</span>Quadrangle, Ancient
+              City of Polonnaruwa
+            </div>
+          </div>
+          <div class="map-card reveal">
+            <h4>Parakrama Samudra</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.9813,7.9325,80.9973,7.9445&layer=mapnik&marker=7.9385,80.9893"
+              height="300"
+              loading="lazy"
+              title="Map of Parakrama Samudra"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">7.9385°N, 80.9893°E</span>Polonnaruwa, North
+              Central Province
+            </div>
+          </div>
+          <div class="map-card reveal">
+            <h4>Lankatilaka Image House</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.9851,7.9258,81.0011,7.9378&layer=mapnik&marker=7.9318,80.9931"
+              height="300"
+              loading="lazy"
+              title="Map of Lankatilaka Image House"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">7.9318°N, 80.9931°E</span>Ancient City of
+              Polonnaruwa
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visitor Info -->
+      <section id="visitor-info-polonnaruwa" class="visitor-info">
+        <span class="section-label" style="color: var(--gold)"
+          >Plan Your Journey</span
+        >
+        <h2 class="section-title" style="color: white">Visitor Information</h2>
+        <div class="divider"></div>
+        <div class="info-grid">
+          <div class="info-card reveal">
+            <h4>Opening Hours</h4>
+            <p>
+              Open 7:00 AM to 6:00 PM daily. Explore in the early morning for
+              the best light and cooler temperatures.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Entry Fees</h4>
+            <p>
+              Tickets required for the archaeological park. SAARC country
+              citizens receive a significant discount.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Getting There</h4>
+            <p>
+              Best reached by bus or private vehicle from Anuradhapura or
+              Dambulla. About 90 minutes by road.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Best Time</h4>
+            <p>
+              May to September is the dry season. Visit in early morning to
+              avoid heat and tour groups.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Dress Code</h4>
+            <p>
+              Shoulders and knees must be covered. Shoes removed when entering
+              temple grounds.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Travel Tips</h4>
+            <p>
+              Rent a bicycle — it is the most enjoyable way to see the compact
+              ruins. Carry plenty of water.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
+    <!-- /panel-polonnaruwa -->
 
-    <div class="city-grid mirror">
-      <div class="monuments-list reveal">
-        <div class="monument-card">
-          <h4>Gal Vihara</h4>
-          <span class="location-pill">📍 7.9420°N 81.0020°E · Polonnaruwa</span>
-          <p>
-            A rock temple of the Buddha where four colossal statues were carved
-            out of a single granite rock face.
-          </p>
-        </div>
-        <div class="monument-card">
-          <h4>Parakrama Samudra</h4>
-          <span class="location-pill">📍 7.9385°N 80.9893°E · Polonnaruwa</span>
-          <p>
-            A massive man-made lake so large it was named the "Sea of
-            Parakrama," a testament to ancient irrigation mastery.
-          </p>
-        </div>
-        <div class="monument-card">
-          <h4>Lankatilaka</h4>
-          <span class="location-pill">📍 7.9318°N 80.9931°E · Polonnaruwa</span>
-          <p>
-            An enormous brick image house with walls soaring 17 meters high,
-            housing a headless but still imposing Buddha statue.
-          </p>
-        </div>
-        <div class="monument-card">
-          <h4>Vatadage</h4>
-          <span class="location-pill">📍 7.9397°N 80.9998°E · Polonnaruwa</span>
-          <p>
-            A circular relic house featuring intricate stone carvings and guard
-            stones, considered one of the most beautiful ruins in the country.
-          </p>
-        </div>
-        <div class="monument-card">
-          <h4>Royal Palace of Parakramabahu</h4>
-          <span class="location-pill">📍 7.9371°N 80.9971°E · Polonnaruwa</span>
-          <p>
-            A multi-story structure that once boasted 1,000 rooms, now standing
-            as impressive brick ruins of a royal past.
+    <!-- ════════════════════════
+         PANEL: KANDY
+    ════════════════════════ -->
+    <div
+      id="panel-kandy"
+      class="city-panel"
+      role="tabpanel"
+      aria-labelledby="tab-kandy"
+    >
+      <!-- Kandy Hero Banner -->
+      <div class="city-banner" style="height: 60vh">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg/1280px-Temple_of_the_Tooth%2C_Kandy_%2814%29.jpg"
+          alt="Kandy Temple of the Tooth"
+          class="city-banner-img"
+          style="animation: diagonalDrift 20s infinite alternate ease-in-out"
+        />
+        <div class="city-banner-content reveal">
+          <h2>Kandy</h2>
+          <p class="city-period">
+            City of the Sacred Tooth · Last Royal Capital 1592–1815
           </p>
         </div>
       </div>
-      <div class="city-description reveal">
-        <h3 class="section-title">The Medieval Stronghold</h3>
-        <p>
-          After the fall of Anuradhapura, Polonnaruwa became the second capital
-          of Sri Lanka. It reached its zenith under King Parakramabahu I, who
-          transformed the city into a magnificent garden city and irrigation
-          hub.
-        </p>
-        <p style="margin-top: 1rem">
-          Unlike the sprawling nature of Anuradhapura, Polonnaruwa is more
-          compact, with its major monuments clustered together, showcasing a
-          blend of Buddhist and Hindu architectural influences.
-        </p>
-        <p style="margin-top: 1rem">
-          The city's preservation is remarkable, allowing visitors to walk
-          through the royal council chambers, library, and sacred quadrangles
-          almost as they appeared eight centuries ago.
-        </p>
-      </div>
-    </div>
+      <style>
+        @keyframes diagonalDrift {
+          from {
+            transform: scale(1) translate(0, 0);
+          }
+          to {
+            transform: scale(1.1) translate(2%, 2%);
+          }
+        }
+      </style>
 
-    <!-- BUG FIX #5 — gallery is now a proper section; gallery-grid has no extra padding -->
-    <section class="gallery">
-      <span class="section-label">Visual Heritage</span>
-      <h2 class="section-title">Photo Gallery</h2>
-      <div class="divider"></div>
-      <div class="gallery-grid">
-        <div class="gallery-item reveal">
+      <!-- Pull Quote -->
+      <div class="pull-quote reveal">
+        <p class="quote-text">
+          "Whoever holds the relic of the Tooth of the Buddha, holds sovereignty
+          over the whole island of Lanka."
+        </p>
+        <span class="attribution"
+          >— Mahavamsa, Ancient Sri Lankan Chronicle</span
+        >
+      </div>
+
+      <!-- Kandy Intro -->
+      <section id="history" class="kandy-intro" style="padding: 7rem 10%">
+        <div class="intro-content reveal">
+          <span class="section-label">The Last Stronghold</span>
+          <h2 class="section-title">A Kingdom in the Mountains</h2>
+          <div class="divider"></div>
+          <p>
+            Kandy, known to locals as Maha Nuwara (The Great City), was the last
+            royal capital of Sri Lanka. Nestled among the emerald hills of the
+            central highlands, it remained an independent kingdom long after the
+            coastal regions fell to European colonial powers.
+          </p>
+          <p style="margin-top: 1rem">
+            The city's natural fortification by mountains and the Mahaweli River
+            allowed the Kandyan kings to preserve their unique culture, arts,
+            and political autonomy for over two centuries against the Portuguese
+            and Dutch.
+          </p>
+          <p style="margin-top: 1rem">
+            Even today, Kandy remains the spiritual heart of the nation — a
+            place where the traditions of the ancient past continue to breathe
+            in the modern world.
+          </p>
+          <p style="margin-top: 1rem">
+            Its layout, centered around the picturesque Kandy Lake and the
+            sacred temple complex, reflects a harmonious blend of nature and
+            royal urban planning.
+          </p>
+        </div>
+        <div class="intro-img-frame reveal">
           <img
-            src="images/gal-viharaya.webp"
-            alt="Gal Vihara"
-            class="gallery-img"
+            src="images/kandy-temple.webp"
+            alt="Kandy Temple"
+            class="intro-img"
           />
-          <div class="gallery-caption">Gal Vihara Rock Temple</div>
         </div>
-        <div class="gallery-item reveal">
-          <img
-            src="images/ruwanwelisaya.webp"
-            alt="Ruwanwelisaya"
-            class="gallery-img"
-          />
-          <div class="gallery-caption">Ruwanwelisaya Stupa</div>
+      </section>
+
+      <!-- Timeline -->
+      <section id="timeline" class="timeline-section">
+        <span class="section-label" style="color: var(--gold)"
+          >Chronicles of the Hill Capital</span
+        >
+        <h2 class="section-title" style="color: white">History Timeline</h2>
+        <div class="divider"></div>
+        <div class="timeline-container">
+          <div class="timeline-line"></div>
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <span class="year-label">4th Century AD</span>
+            <h3 class="event-name">Tooth Relic Arrives in Sri Lanka</h3>
+            <p>
+              Brought from Kalinga, India, hidden in the hair of Princess
+              Hemamala, the relic became a symbol of divine right to rule.
+            </p>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <span class="year-label">1592</span>
+            <h3 class="event-name">Kandy Becomes Capital</h3>
+            <p>
+              King Vimaladharmasuriya I established Kandy as the royal seat,
+              bringing the Tooth Relic to the city for protection.
+            </p>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <span class="year-label">1600s–1700s</span>
+            <h3 class="event-name">Resistance Against Colonial Powers</h3>
+            <p>
+              The kingdom successfully repelled numerous invasions by the
+              Portuguese and Dutch, utilizing the rugged terrain.
+            </p>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <span class="year-label">1765</span>
+            <h3 class="event-name">Current Temple Complex Built</h3>
+            <p>
+              King Kirti Sri Rajasinha oversaw the construction of much of the
+              temple complex seen today, showcasing classic Kandyan
+              architecture.
+            </p>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <span class="year-label">1815</span>
+            <h3 class="event-name">The Kandyan Convention</h3>
+            <p>
+              The kingdom was finally ceded to the British Empire through a
+              treaty, ending over 2,300 years of monarchical rule in Sri Lanka.
+            </p>
+          </div>
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <span class="year-label">1988</span>
+            <h3 class="event-name">UNESCO World Heritage Designation</h3>
+            <p>
+              The sacred city of Kandy was recognized for its immense cultural
+              value and historical significance to the Buddhist world.
+            </p>
+          </div>
         </div>
-        <div class="gallery-item reveal">
-          <img src="images/vatadage.webp" alt="Vatadage" class="gallery-img" />
-          <div class="gallery-caption">Polonnaruwa Vatadage</div>
+      </section>
+
+      <!-- Temple of the Tooth -->
+      <section id="temple" class="temple-section">
+        <h2 class="section-title reveal">Temple of the Sacred Tooth Relic</h2>
+        <div class="divider"></div>
+        <div class="temple-grid">
+          <div class="temple-img-wrap reveal">
+            <img
+              src="images/kandy-temple-of-tooth.webp"
+              alt="Temple Interior"
+              class="intro-img"
+            />
+          </div>
+          <div class="temple-features reveal">
+            <div class="feature-block">
+              <span class="feature-label">The Sacred Relic</span>
+              <span class="location-pill">📍 7.2936°N 80.6413°E · Kandy</span>
+              <p>
+                Enshrined in seven golden caskets, the tooth of the Buddha is
+                the ultimate object of veneration for millions.
+              </p>
+            </div>
+            <div class="feature-block">
+              <span class="feature-label">Architecture</span>
+              <p>
+                The "Dalada Maligawa" features iconic Kandyan elements like the
+                octagonal tower (Pattirippuwa) and moonstones.
+              </p>
+            </div>
+            <div class="feature-block">
+              <span class="feature-label">The Museum Complex</span>
+              <p>
+                Housing ancient royal artifacts and a record of the global
+                significance of the Tooth Relic throughout history.
+              </p>
+            </div>
+            <div class="feature-block">
+              <span class="feature-label">Daily Puja Ceremonies</span>
+              <p>
+                Ancient rituals performed thrice daily by monks, accompanied by
+                traditional drumming and horns.
+              </p>
+            </div>
+            <div class="feature-block">
+              <span class="feature-label">Political &amp; Spiritual Power</span>
+              <p>
+                Historically the palladium of the state; today it remains
+                central to Sri Lankan national identity.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="gallery-item reveal">
-          <img
-            src="images/isurumuniya.webp"
-            alt="Isurumuniya"
-            class="gallery-img"
-          />
-          <div class="gallery-caption">Isurumuniya Lovers Rock Carving</div>
+      </section>
+
+      <!-- Festivals -->
+      <section id="festivals" class="festivals-section">
+        <span class="section-label">Living Heritage</span>
+        <h2 class="section-title">The Grandest Pageants</h2>
+        <div class="divider"></div>
+        <p class="reveal">
+          Kandy is famous for its vibrant festivals, the most spectacular being
+          the Esala Perahera, a centuries-old tradition that brings the streets
+          to life with music and light.
+        </p>
+        <img
+          src="images/esala-perahara.webp"
+          alt="Esala Perahera"
+          class="perahera-banner reveal"
+        />
+        <div class="festival-cards">
+          <div class="festival-card reveal">
+            <h4>Esala Perahera</h4>
+            <p>
+              July/August. Ten days of grand processions with over 100 decorated
+              elephants, dancers, and drummers.
+            </p>
+          </div>
+          <div class="festival-card reveal">
+            <h4>Vesak Poya</h4>
+            <p>
+              May. Commemorating Buddha's birth, enlightenment, and death with
+              elaborate lanterns and oil lamps.
+            </p>
+          </div>
+          <div class="festival-card reveal">
+            <h4>Poson Poya</h4>
+            <p>
+              June. Marking the arrival of Buddhism in Sri Lanka, celebrated
+              with spiritual devotion across the city.
+            </p>
+          </div>
+          <div class="festival-card reveal">
+            <h4>Duruthu Perahera</h4>
+            <p>
+              January. A significant Buddhist pageant marking the first visit of
+              the Buddha to Sri Lanka.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Significance -->
+      <div class="significance">
+        <div class="sig-col reveal">
+          <span class="sig-num">01</span>
+          <div class="sig-content">
+            <h4>Buddhist Heritage</h4>
+            <p>
+              Kandy is the foremost site of Buddhist pilgrimage in Sri Lanka,
+              attracting devotees from across the globe.
+            </p>
+          </div>
+        </div>
+        <div class="sig-col reveal">
+          <span class="sig-num">02</span>
+          <div class="sig-content">
+            <h4>Kandyan Arts</h4>
+            <p>
+              The city is the cradle of traditional dance, music, and crafts
+              like brasswork and lacquerware.
+            </p>
+          </div>
+        </div>
+        <div class="sig-col reveal">
+          <span class="sig-num">03</span>
+          <div class="sig-content">
+            <h4>National Identity</h4>
+            <p>
+              Kandy represents the resilience and cultural independence of the
+              Sri Lankan people throughout the centuries.
+            </p>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section id="locations" class="map-section reveal">
-      <span class="section-label">Locations</span>
-      <h2 class="section-title">Find Your Way</h2>
-      <div class="divider"></div>
+      <!-- Kandy Maps -->
+      <section id="locations-kandy" class="map-section reveal">
+        <span class="section-label">Locations</span>
+        <h2 class="section-title">Find Your Way</h2>
+        <div class="divider"></div>
+        <div class="map-grid grid-kandy">
+          <div class="map-card reveal">
+            <h4>Temple of the Sacred Tooth Relic</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.6333,7.2876,80.6493,7.2996&layer=mapnik&marker=7.2936,80.6413"
+              width="100%"
+              height="300"
+              loading="lazy"
+              title="Map of Temple of the Sacred Tooth Relic"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">7.2936°N, 80.6413°E</span>Sri Dalada Veediya,
+              Kandy 20000
+            </div>
+          </div>
+          <div class="map-card reveal">
+            <h4>Kandy Lake (Kiri Muhuda)</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.6357,7.2845,80.6517,7.2965&layer=mapnik&marker=7.2905,80.6437"
+              width="100%"
+              height="300"
+              loading="lazy"
+              title="Map of Kandy Lake"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">7.2905°N, 80.6437°E</span>Kandy Lake, Kandy,
+              Central Province
+            </div>
+          </div>
+          <div class="map-card reveal">
+            <h4>Peradeniya Royal Botanical Gardens</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.5886,7.2623,80.6046,7.2743&layer=mapnik&marker=7.2683,80.5966"
+              width="100%"
+              height="300"
+              loading="lazy"
+              title="Map of Peradeniya Royal Botanical Gardens"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">7.2683°N, 80.5966°E</span>Peradeniya, Kandy
+              20400
+            </div>
+          </div>
+          <div class="map-card reveal">
+            <h4>Bahirawakanda Buddha Statue</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.6280,7.2931,80.6440,7.3051&layer=mapnik&marker=7.2991,80.6360"
+              width="100%"
+              height="300"
+              loading="lazy"
+              title="Map of Bahirawakanda Buddha Statue"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">7.2991°N, 80.6360°E</span>Bahirawakanda,
+              Kandy
+            </div>
+          </div>
+          <div class="map-card reveal">
+            <h4>Embekka Devalaya</h4>
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=80.5420,7.2273,80.5580,7.2393&layer=mapnik&marker=7.2333,80.5500"
+              width="100%"
+              height="300"
+              loading="lazy"
+              title="Map of Embekka Devalaya"
+            ></iframe>
+            <div class="map-details">
+              <span class="coords">7.2333°N, 80.5500°E</span>Embekka, Kandy
+              District
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <h3 class="map-subsection-title">Anuradhapura</h3>
-      <div class="map-grid grid-3">
-        <div class="map-card reveal">
-          <h4>Ruwanwelisaya Stupa</h4>
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=80.3885,8.3430,80.4045,8.3550&layer=mapnik&marker=8.3490,80.3965"
-            height="300"
-            loading="lazy"
-            title="Map of Ruwanwelisaya Stupa"
-          ></iframe>
-          <div class="map-details">
-            <span class="coords">8.3490°N, 80.3965°E</span>
-            Sacred City of Anuradhapura, North Central Province
+      <!-- Kandy Visitor Info -->
+      <section id="visitor-info-kandy" class="visitor-info-kandy">
+        <span class="section-label" style="color: var(--gold)"
+          >Visitor Essentials</span
+        >
+        <h2 class="section-title" style="color: white">Planning Your Visit</h2>
+        <div class="divider"></div>
+        <div class="info-grid">
+          <div class="info-card reveal">
+            <h4>Temple Hours</h4>
+            <p>
+              Open daily from 5:30 AM to 8:00 PM. Puja ceremonies occur at 5:30
+              AM, 9:30 AM, and 6:30 PM.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Entry Fees</h4>
+            <p>
+              Foreign visitors pay an entrance fee (approx $15) which includes a
+              guide booklet and footwear storage.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Getting to Kandy</h4>
+            <p>
+              The scenic "Udarata Menike" train from Colombo offers one of the
+              world's most beautiful rail journeys.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Temple Etiquette</h4>
+            <p>
+              Remove shoes and hats. Shoulders and knees must be covered.
+              Silence is required in the inner sanctum.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Best Time</h4>
+            <p>
+              The Esala Perahera in August is most vibrant; December to April
+              offers the best weather for exploring.
+            </p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Nearby Attractions</h4>
+            <p>
+              Peradeniya Royal Botanical Gardens, Bahirawakanda Buddha Statue,
+              and the Udawatte Kele Sanctuary.
+            </p>
           </div>
         </div>
-        <div class="map-card reveal">
-          <h4>Sri Maha Bodhi</h4>
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=80.3881,8.3393,80.4041,8.3513&layer=mapnik&marker=8.3453,80.3961"
-            height="300"
-            loading="lazy"
-            title="Map of Sri Maha Bodhi"
-          ></iframe>
-          <div class="map-details">
-            <span class="coords">8.3453°N, 80.3961°E</span>
-            Mahamewna Gardens, Anuradhapura
-          </div>
-        </div>
-        <div class="map-card reveal">
-          <h4>Jetavanaramaya Stupa</h4>
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=80.3923,8.3451,80.4083,8.3571&layer=mapnik&marker=8.3511,80.4003"
-            height="300"
-            loading="lazy"
-            title="Map of Jetavanaramaya Stupa"
-          ></iframe>
-          <div class="map-details">
-            <span class="coords">8.3511°N, 80.4003°E</span>
-            Jetavana Monastery, Anuradhapura
-          </div>
-        </div>
-      </div>
+      </section>
+    </div>
+    <!-- /panel-kandy -->
 
-      <h3 class="map-subsection-title">Polonnaruwa</h3>
-      <div class="map-grid grid-2x2">
-        <div class="map-card reveal">
-          <h4>Gal Vihara</h4>
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=80.9940,7.9360,81.0100,7.9480&layer=mapnik&marker=7.9420,81.0020"
-            height="300"
-            loading="lazy"
-            title="Map of Gal Vihara"
-          ></iframe>
-          <div class="map-details">
-            <span class="coords">7.9420°N, 81.0020°E</span>
-            Ancient City of Polonnaruwa, North Central Province
-          </div>
-        </div>
-        <div class="map-card reveal">
-          <h4>Vatadage</h4>
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=80.9918,7.9337,81.0078,7.9457&layer=mapnik&marker=7.9397,80.9998"
-            height="300"
-            loading="lazy"
-            title="Map of Vatadage"
-          ></iframe>
-          <div class="map-details">
-            <span class="coords">7.9397°N, 80.9998°E</span>
-            Quadrangle, Ancient City of Polonnaruwa
-          </div>
-        </div>
-        <div class="map-card reveal">
-          <h4>Parakrama Samudra</h4>
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=80.9813,7.9325,80.9973,7.9445&layer=mapnik&marker=7.9385,80.9893"
-            height="300"
-            loading="lazy"
-            title="Map of Parakrama Samudra"
-          ></iframe>
-          <div class="map-details">
-            <span class="coords">7.9385°N, 80.9893°E</span>
-            Polonnaruwa, North Central Province
-          </div>
-        </div>
-        <div class="map-card reveal">
-          <h4>Lankatilaka Image House</h4>
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=80.9851,7.9258,81.0011,7.9378&layer=mapnik&marker=7.9318,80.9931"
-            height="300"
-            loading="lazy"
-            title="Map of Lankatilaka Image House"
-          ></iframe>
-          <div class="map-details">
-            <span class="coords">7.9318°N, 80.9931°E</span>
-            Ancient City of Polonnaruwa
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="visitor-info" class="visitor-info">
-      <span class="section-label" style="color: var(--gold)"
-        >Plan Your Journey</span
-      >
-      <h2 class="section-title" style="color: white">Visitor Information</h2>
-      <div class="divider"></div>
-      <div class="info-grid">
-        <div class="info-card reveal">
-          <h4>Opening Hours</h4>
-          <p>
-            Both sites are generally open from 7:00 AM to 6:00 PM daily. It's
-            recommended to start early to avoid the midday heat.
-          </p>
-        </div>
-        <div class="info-card reveal">
-          <h4>Entry Fees</h4>
-          <p>
-            Tickets are required for both Anuradhapura and Polonnaruwa. SAARC
-            country citizens receive a significant discount.
-          </p>
-        </div>
-        <div class="info-card reveal">
-          <h4>Getting There</h4>
-          <p>
-            Anuradhapura is accessible by train and bus from Colombo.
-            Polonnaruwa is best reached by bus or private vehicle from
-            Anuradhapura or Dambulla.
-          </p>
-        </div>
-        <div class="info-card reveal">
-          <h4>Best Time</h4>
-          <p>
-            The dry season from May to September is ideal for exploring the
-            ruins, though early morning or late afternoon is best year-round.
-          </p>
-        </div>
-        <div class="info-card reveal">
-          <h4>Dress Code</h4>
-          <p>
-            These are sacred sites. Please wear clothing that covers shoulders
-            and knees. Hats and shoes must be removed when entering temple
-            grounds.
-          </p>
-        </div>
-        <div class="info-card reveal">
-          <h4>Travel Tips</h4>
-          <p>
-            Rent a bicycle to explore Polonnaruwa; it's the most enjoyable way
-            to see the ruins. Carry plenty of water and sun protection.
-          </p>
-        </div>
-      </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
       <div class="footer-content">
         <a href="index.html" class="logo">LANKA HERITAGE</a>
-        <!-- BUG FIX #4 — footer-nav now wraps properly -->
         <div class="footer-nav">
           <a href="index.html">Home</a>
-          <a href="kandy.html">Kandy →</a>
+          <a href="kandy.html">Kandy</a>
           <a href="contact.html">Contact</a>
         </div>
       </div>
@@ -1104,12 +2032,12 @@
     </footer>
 
     <script>
-      // ── BUG FIX #1: Hamburger menu ──
+      // ── Hamburger ──
       const hamburger = document.querySelector(".hamburger");
       const mobileNav = document.getElementById("mobileNav");
 
       function closeMobileNav() {
-        hamburger.classList.remove("open");
+        if (hamburger) hamburger.classList.remove("open");
         mobileNav.classList.remove("open");
         document.body.style.overflow = "";
       }
@@ -1121,31 +2049,74 @@
           document.body.style.overflow = isOpen ? "hidden" : "";
         });
       }
-
-      // Close drawer when clicking outside
       mobileNav.addEventListener("click", (e) => {
         if (e.target === mobileNav) closeMobileNav();
       });
 
-      // ── BUG FIX #9: Reveal — stable per-element delay ──
-      const reveals = document.querySelectorAll(".reveal");
-      reveals.forEach((el, idx) => (el.dataset.revealIndex = idx));
+      // ── City Tab Switcher ──
+      function switchCity(city) {
+        // Hide all panels
+        document
+          .querySelectorAll(".city-panel")
+          .forEach((p) => p.classList.remove("active"));
+        document.querySelectorAll(".city-tab").forEach((t) => {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
 
-      const io = new IntersectionObserver(
+        // Show selected
+        const panel = document.getElementById("panel-" + city);
+        const tab = document.getElementById("tab-" + city);
+        if (panel) panel.classList.add("active");
+        if (tab) {
+          tab.classList.add("active");
+          tab.setAttribute("aria-selected", "true");
+        }
+
+        // Re-trigger reveal animations for newly shown panel
+        panel
+          .querySelectorAll(
+            ".reveal:not(.visible), .timeline-entry:not(.visible)",
+          )
+          .forEach((el, idx) => {
+            el.dataset.revealIndex = idx;
+            revealObserver.observe(el);
+          });
+
+        // Scroll to just below the tabs bar
+        const tabsEl = document.querySelector(".city-tabs-wrapper");
+        const offset = tabsEl
+          ? tabsEl.getBoundingClientRect().bottom + window.scrollY
+          : 0;
+        window.scrollTo({ top: offset, behavior: "smooth" });
+      }
+
+      // ── Reveal Observer ──
+      const revealObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
             if (e.isIntersecting) {
               const delay =
-                (parseInt(e.target.dataset.revealIndex, 10) % 6) * 90;
+                (parseInt(e.target.dataset.revealIndex || 0, 10) % 6) * 90;
               setTimeout(() => e.target.classList.add("visible"), delay);
-              io.unobserve(e.target);
+              revealObserver.unobserve(e.target);
             }
           });
         },
         { threshold: 0.08 },
       );
 
-      reveals.forEach((r) => io.observe(r));
+      document
+        .querySelectorAll(".reveal, .timeline-entry")
+        .forEach((el, idx) => {
+          el.dataset.revealIndex = idx;
+          revealObserver.observe(el);
+        });
+
+      // ── URL hash routing on load ──
+      const hash = window.location.hash;
+      if (hash === "#polonnaruwa") switchCity("polonnaruwa");
+      else if (hash === "#kandy") switchCity("kandy");
     </script>
     <script src="navbar.js"></script>
   </body>

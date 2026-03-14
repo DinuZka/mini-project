@@ -3,7 +3,6 @@ const siteNavItems = [
   { label: "Gallery", href: "gallery.html" },
   { label: "Blogs", href: "blog.html" },
   { label: "Ancient Cities", href: "ancient-cities.html" },
-  { label: "Kandy", href: "kandy.html" },
   { label: "Contact", href: "contact.html" },
 ];
 
