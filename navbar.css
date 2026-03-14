@@ -1,0 +1,122 @@
+:root {
+  --navbar-bg: rgba(26, 18, 8, 0.93);
+  --navbar-border: rgba(212, 168, 67, 0.2);
+  --navbar-text: #f9f5e8;
+  --navbar-hover: #d4a843;
+  --navbar-active: #d4a843;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 4.7rem;
+  min-height: 100vh;
+  background: #f5ede0;
+}
+
+@media (max-width: 900px) {
+  body {
+    padding-top: 4.6rem;
+  }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 4%;
+  background: var(--navbar-bg);
+  border-bottom: 1px solid var(--navbar-border);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+}
+
+.navbar .logo {
+  font-family: "Cinzel", serif;
+  color: var(--navbar-active);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.nav-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  color: var(--navbar-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-links a {
+  color: var(--navbar-text);
+  text-decoration: none;
+  font-family: "Cinzel", serif;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  transition: color 0.25s ease;
+  padding: 0.25rem 0;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--navbar-active);
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: rgba(14, 10, 5, 0.97);
+    border-bottom: 1px solid var(--navbar-border);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.25s ease,
+      opacity 0.2s ease;
+  }
+
+  .nav-links.open {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 0.45rem 0.4rem;
+    border-radius: 4px;
+  }
+}

@@ -84,6 +84,7 @@
       .nav-links a:hover,
       .nav-links a.active {
         color: var(--gold);
+        border-bottom: 1px solid var(--gold);
       }
 
       /* Hero / Header Section */
@@ -316,19 +317,10 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="navbar.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <a href="index.html" class="logo">LANKA HERITAGE</a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="blog.html">Blogs</a>
-        <a href="ancient-cities.html">Ancient Cities</a>
-        <a href="kandy.html">Kandy</a>
-        <a href="contact.html" class="active">Contact</a>
-      </div>
-    </nav>
+    <div id="navbar"></div>
 
     <header class="contact-header">
       <h1>Contact Us</h1>
@@ -461,5 +453,6 @@
         <p>&copy; 2026 Lanka Heritage Foundation. All rights reserved.</p>
       </div>
     </footer>
+    <script src="navbar.js"></script>
   </body>
 </html>

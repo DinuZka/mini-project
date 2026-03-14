@@ -79,6 +79,10 @@
       .nav-links a:hover {
         color: var(--gold);
       }
+      .nav-links a.active {
+        color: var(--gold);
+        border-bottom: 1px solid var(--gold);
+      }
 
       /* Hero */
       .hero {
@@ -528,6 +532,7 @@
         text-align: center;
       }
       .footer-nav {
+        display: flex;
         margin-bottom: 2rem;
       }
       .footer-nav a {
@@ -573,20 +578,10 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="navbar.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <a href="index.html" class="logo">LANKA HERITAGE</a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="#history">History</a>
-        <a href="#temple">The Temple</a>
-        <a href="#festivals">Festivals</a>
-        <a href="#locations">Locations</a>
-        <a href="ancient-cities.html">← Ancient Cities</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </nav>
+    <div id="navbar"></div>
 
     <header class="hero">
       <div class="hero-bg"></div>
@@ -1013,5 +1008,6 @@
       );
       reveals.forEach((r) => io.observe(r));
     </script>
+    <script src="navbar.js"></script>
   </body>
 </html>

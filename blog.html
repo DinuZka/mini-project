@@ -78,6 +78,7 @@
       .nav-links a:hover,
       .nav-links a.active {
         color: var(--gold);
+        border-bottom: 1px solid var(--gold);
       }
 
       /* ── Hero ── */
@@ -731,20 +732,10 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="navbar.css" />
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <a href="index.html" class="logo">LANKA HERITAGE</a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="blog.html" class="active">Blogs</a>
-        <a href="ancient-cities.html">Ancient Cities</a>
-        <a href="kandy.html">Kandy</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </nav>
+    <div id="navbar"></div>
 
     <!-- Hero -->
     <header class="hero">
@@ -1290,5 +1281,6 @@
         if (currentPage < 2) updatePage(currentPage + 1);
       });
     </script>
+    <script src="navbar.js"></script>
   </body>
 </html>

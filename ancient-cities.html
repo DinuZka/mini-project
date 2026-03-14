@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a1208" />
     <title>Ancient Cities | Historical Sites of Sri Lanka</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -40,7 +40,7 @@
         overflow-x: hidden;
       }
 
-      /* Nav */
+      /* ── Navbar ── */
       .navbar {
         position: fixed;
         top: 0;
@@ -80,8 +80,72 @@
       .nav-links a:hover {
         color: var(--gold);
       }
+      .nav-links a.active {
+        color: var(--gold);
+        border-bottom: 1px solid var(--gold);
+      }
 
-      /* Hero */
+      /* ── Hamburger (BUG FIX #1) ── */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+        background: none;
+        border: none;
+      }
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--gold);
+        transition:
+          transform 0.3s ease,
+          opacity 0.3s ease;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Mobile nav drawer */
+      .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(14, 7, 5, 0.97);
+        z-index: 999;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        padding-top: 5rem;
+      }
+      .mobile-nav.open {
+        display: flex;
+      }
+      .mobile-nav a {
+        font-family: "Cinzel", serif;
+        color: var(--ivory);
+        text-decoration: none;
+        font-size: 1.3rem;
+        letter-spacing: 0.2em;
+        transition: color 0.3s ease;
+      }
+      .mobile-nav a:hover {
+        color: var(--gold);
+      }
+
+      /* ── Hero ── */
       .hero {
         height: 80vh;
         width: 100%;
@@ -94,13 +158,9 @@
         color: var(--ivory);
         overflow: hidden;
       }
-
       .hero-bg {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         background:
           linear-gradient(rgba(14, 7, 5, 0.6), rgba(14, 7, 5, 0.4)),
           url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Anuradhapura_Ruwanwelisaya_stupa.jpg/1280px-Anuradhapura_Ruwanwelisaya_stupa.jpg");
@@ -109,7 +169,6 @@
         z-index: -1;
         animation: slowZoom 18s infinite alternate ease-in-out;
       }
-
       @keyframes slowZoom {
         from {
           transform: scale(1);
@@ -118,19 +177,16 @@
           transform: scale(1.06);
         }
       }
-
       .hero h1 {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(3rem, 8vw, 5rem);
+        font-size: clamp(2.4rem, 8vw, 5rem);
         font-weight: 300;
         margin-bottom: 1rem;
       }
-
       .hero h1 span {
         font-style: italic;
         color: var(--stone);
       }
-
       .eyebrow {
         font-family: "Cinzel", serif;
         color: var(--gold);
@@ -140,7 +196,7 @@
         margin-bottom: 1rem;
       }
 
-      /* Sections */
+      /* ── Sections ── */
       section {
         padding: 7rem 10%;
         position: relative;
@@ -157,7 +213,7 @@
       .section-title {
         font-family: "Cormorant Garamond", serif;
         font-weight: 300;
-        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-size: clamp(2rem, 5vw, 4rem);
         color: var(--deep);
         margin-bottom: 1.5rem;
       }
@@ -168,7 +224,7 @@
         margin-bottom: 2.5rem;
       }
 
-      /* Reveal */
+      /* ── Reveal animation ── */
       .reveal {
         opacity: 0;
         transform: translateY(30px);
@@ -181,7 +237,7 @@
         transform: none;
       }
 
-      /* Intro Strip */
+      /* ── Intro Strip ── */
       .intro-strip {
         background-color: var(--deep);
         color: var(--parchment);
@@ -233,7 +289,7 @@
         color: var(--stone);
       }
 
-      /* City Sections */
+      /* ── City Banners ── */
       .city-banner {
         height: 55vh;
         width: 100%;
@@ -249,17 +305,13 @@
       .city-banner::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         background: rgba(14, 7, 5, 0.5);
         z-index: 1;
       }
       .city-banner-img {
         position: absolute;
-        top: 0;
-        left: 0;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -271,26 +323,24 @@
       }
       .city-banner h2 {
         font-family: "Cormorant Garamond", serif;
-        font-size: 5rem;
+        font-size: clamp(2.5rem, 8vw, 5rem);
         font-weight: 300;
         margin-bottom: 0.5rem;
       }
       .city-period {
         font-family: "Cinzel", serif;
         color: var(--gold);
-        font-size: 0.9rem;
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
         letter-spacing: 0.2em;
       }
 
+      /* ── City Grid ── */
       .city-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 5rem;
         padding: 5rem 10%;
         align-items: start;
-      }
-      .city-grid.mirror {
-        grid-template-columns: 1fr 1fr;
       }
       .city-grid.mirror .monuments-list {
         order: 1;
@@ -316,8 +366,6 @@
         font-weight: 700;
         margin-bottom: 0.2rem;
       }
-
-      /* Location Pill */
       .location-pill {
         display: inline-block;
         font-family: "Cinzel", serif;
@@ -331,7 +379,7 @@
         text-transform: uppercase;
       }
 
-      /* Map Section */
+      /* ── Map Section ── */
       .map-section {
         background-color: var(--deep);
         color: var(--parchment);
@@ -353,12 +401,12 @@
         border-bottom: 1px solid rgba(212, 168, 67, 0.1);
         padding-bottom: 0.5rem;
       }
-
       .map-grid {
         display: grid;
         gap: 2rem;
         margin-bottom: 4rem;
       }
+      /* BUG FIX #3 — grid column classes now responsive */
       .grid-3 {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -385,13 +433,14 @@
       .map-card iframe {
         border: 2px solid rgba(212, 168, 67, 0.3);
         transition: border-color 0.3s ease;
+        width: 100%;
+        display: block;
       }
       .map-card:hover iframe {
         border-color: var(--gold);
       }
       .map-details {
         margin-top: 1rem;
-        font-family: "Crimson Pro", serif;
         font-size: 0.9rem;
         color: var(--smoke);
       }
@@ -403,7 +452,7 @@
         margin-bottom: 0.3rem;
       }
 
-      /* Separator */
+      /* ── Separator ── */
       .color-separator {
         height: 6px;
         width: 100%;
@@ -415,18 +464,23 @@
         );
       }
 
-      /* Gallery */
+      /* ── Gallery (BUG FIX #5 — removed double padding) ── */
+      .gallery {
+        padding: 7rem 10%;
+      }
       .gallery-grid {
+        /* BUG FIX #5 — removed padding: 5rem 10% that caused double padding */
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 250px;
         gap: 1.5rem;
-        padding: 5rem 10%;
+        margin-top: 2rem;
       }
       .gallery-item {
         position: relative;
         overflow: hidden;
       }
+      /* BUG FIX #2 — span only applies on larger screens (see media queries) */
       .gallery-item:first-child {
         grid-column: span 2;
         grid-row: span 2;
@@ -456,7 +510,7 @@
         opacity: 1;
       }
 
-      /* Visitor Info */
+      /* ── Visitor Info ── */
       .visitor-info {
         background-color: var(--deep);
         color: var(--parchment);
@@ -480,7 +534,7 @@
         letter-spacing: 0.1em;
       }
 
-      /* Footer */
+      /* ── Footer ── */
       footer {
         background-color: var(--night);
         color: var(--parchment);
@@ -490,28 +544,39 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap; /* BUG FIX #4 */
+        gap: 1.5rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         padding-bottom: 2rem;
         margin-bottom: 2rem;
+      }
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
       }
       .footer-nav a {
         color: var(--ivory);
         text-decoration: none;
         font-family: "Cinzel", serif;
-        margin-left: 2rem;
         font-size: 0.8rem;
       }
 
-      /* Responsive */
+      /* ══════════════════════════════════════
+         RESPONSIVE BREAKPOINTS
+      ══════════════════════════════════════ */
+
+      /* Tablet — 900px */
       @media (max-width: 900px) {
-        .intro-strip,
-        .city-grid,
-        .info-grid,
-        .map-grid {
+        .intro-strip {
           grid-template-columns: 1fr;
+          gap: 3rem;
         }
+        .city-grid,
         .city-grid.mirror {
           grid-template-columns: 1fr;
+          gap: 3rem;
+          padding: 3rem 6%;
         }
         .city-grid.mirror .monuments-list {
           order: 2;
@@ -519,35 +584,141 @@
         .city-grid.mirror .city-description {
           order: 1;
         }
-        .gallery-grid {
+
+        /* BUG FIX #3 — map grids collapse to 1 col on tablet */
+        .grid-3 {
           grid-template-columns: 1fr 1fr;
         }
-      }
-      @media (max-width: 600px) {
+        .grid-2x2 {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
         .gallery-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr 1fr;
+          grid-auto-rows: 200px;
         }
-        .city-banner h2 {
-          font-size: 3rem;
+      }
+
+      /* Mobile — 600px */
+      @media (max-width: 600px) {
+        section {
+          padding: 4rem 5%;
         }
+
+        /* BUG FIX #1 — show hamburger, hide desktop nav */
         .nav-links {
           display: none;
         }
+        .hamburger {
+          display: flex;
+        }
+
+        .hero {
+          height: 70vh;
+        }
+
+        .eyebrow {
+          font-size: 0.7rem;
+          letter-spacing: 0.15em;
+        }
+
+        .city-banner {
+          height: 45vh;
+        }
+        .city-banner h2 {
+          font-size: 2.4rem;
+        }
+
+        .city-grid,
+        .city-grid.mirror {
+          padding: 2.5rem 5%;
+          gap: 2rem;
+        }
+
+        /* BUG FIX #3 — single col maps on mobile */
+        .grid-3,
+        .grid-2x2 {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
+        .stat-card {
+          padding: 1.5rem 1rem;
+        }
+        .stat-num {
+          font-size: 2.2rem;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+        .info-card {
+          padding: 1.5rem;
+        }
+
+        /* BUG FIX #2 — no spanning on mobile gallery */
+        .gallery {
+          padding: 4rem 5%;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          grid-auto-rows: 220px;
+        }
+        .gallery-item:first-child {
+          grid-column: span 1;
+          grid-row: span 1;
+        }
+
+        /* BUG FIX #4 — footer stacks on mobile */
+        .footer-content {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .footer-nav {
+          margin-left: 0;
+        }
+
+        .map-subsection-title {
+          font-size: 0.9rem;
+        }
+      }
+
+      /* Extra small — 380px */
+      @media (max-width: 380px) {
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+        .logo {
+          font-size: 1rem;
+        }
       }
     </style>
+    <link rel="stylesheet" href="navbar.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <a href="index.html" class="logo">LANKA HERITAGE</a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="#anuradhapura">Anuradhapura</a>
-        <a href="#polonnaruwa">Polonnaruwa</a>
-        <a href="#locations">Locations</a>
-        <a href="#visitor-info">Visitor Info</a>
-        <a href="kandy.html">Kandy →</a>
-        <a href="contact.html">Contact</a>
-      </div>
+    <div id="navbar"></div>
+
+    <!-- ── Mobile Nav Drawer ── -->
+    <nav
+      class="mobile-nav"
+      id="mobileNav"
+      role="navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="index.html" onclick="closeMobileNav()">Home</a>
+      <a href="kandy.html" onclick="closeMobileNav()">Kandy</a>
+      <a href="#anuradhapura" onclick="closeMobileNav()">Anuradhapura</a>
+      <a href="#polonnaruwa" onclick="closeMobileNav()">Polonnaruwa</a>
+      <a href="#locations" onclick="closeMobileNav()">Locations</a>
+      <a href="#visitor-info" onclick="closeMobileNav()">Visitor Info</a>
+      <a href="contact.html" onclick="closeMobileNav()">Contact</a>
     </nav>
 
     <header class="hero">
@@ -570,7 +741,7 @@
           successive dynasties, creating a legacy of architectural grandeur and
           engineering marvels.
         </p>
-        <p>
+        <p style="margin-top: 1rem">
           From the world's tallest brick structures to sophisticated irrigation
           systems that still water the fields today, these kingdoms represent
           the zenith of ancient South Asian culture and spirituality.
@@ -619,13 +790,13 @@
           century BC, it grew into a sprawling metropolis, centered around
           massive stupas and monastic complexes.
         </p>
-        <p>
+        <p style="margin-top: 1rem">
           The city's layout was a masterpiece of urban planning, integrating
           spiritual monuments with an advanced hydraulic system of man-made
           reservoirs (wewas) and canals. These waters sustained a population
           that reached into the hundreds of thousands at its peak.
         </p>
-        <p>
+        <p style="margin-top: 1rem">
           Today, the ruins offer a window into a time when Sri Lanka was a
           beacon of Buddhist learning, attracting scholars and pilgrims from
           across the Silk Road.
@@ -679,8 +850,8 @@
             >📍 8.3522°N 80.3978°E · Anuradhapura</span
           >
           <p>
-            Considered one of the best specimen of bathing tanks or pools in
-            ancient Sri Lanka, showcasing sophisticated filtration and drainage.
+            Considered one of the best specimen of bathing tanks in ancient Sri
+            Lanka, showcasing sophisticated filtration and drainage.
           </p>
         </div>
       </div>
@@ -751,12 +922,12 @@
           transformed the city into a magnificent garden city and irrigation
           hub.
         </p>
-        <p>
+        <p style="margin-top: 1rem">
           Unlike the sprawling nature of Anuradhapura, Polonnaruwa is more
           compact, with its major monuments clustered together, showcasing a
           blend of Buddhist and Hindu architectural influences.
         </p>
-        <p>
+        <p style="margin-top: 1rem">
           The city's preservation is remarkable, allowing visitors to walk
           through the royal council chambers, library, and sacred quadrangles
           almost as they appeared eight centuries ago.
@@ -764,6 +935,7 @@
       </div>
     </div>
 
+    <!-- BUG FIX #5 — gallery is now a proper section; gallery-grid has no extra padding -->
     <section class="gallery">
       <span class="section-label">Visual Heritage</span>
       <h2 class="section-title">Photo Gallery</h2>
@@ -807,49 +979,40 @@
 
       <h3 class="map-subsection-title">Anuradhapura</h3>
       <div class="map-grid grid-3">
-        <!-- Ruwanwelisaya -->
         <div class="map-card reveal">
           <h4>Ruwanwelisaya Stupa</h4>
           <iframe
             src="https://www.openstreetmap.org/export/embed.html?bbox=80.3885,8.3430,80.4045,8.3550&layer=mapnik&marker=8.3490,80.3965"
-            width="100%"
             height="300"
             loading="lazy"
             title="Map of Ruwanwelisaya Stupa"
-          >
-          </iframe>
+          ></iframe>
           <div class="map-details">
             <span class="coords">8.3490°N, 80.3965°E</span>
             Sacred City of Anuradhapura, North Central Province
           </div>
         </div>
-        <!-- Sri Maha Bodhi -->
         <div class="map-card reveal">
           <h4>Sri Maha Bodhi</h4>
           <iframe
             src="https://www.openstreetmap.org/export/embed.html?bbox=80.3881,8.3393,80.4041,8.3513&layer=mapnik&marker=8.3453,80.3961"
-            width="100%"
             height="300"
             loading="lazy"
             title="Map of Sri Maha Bodhi"
-          >
-          </iframe>
+          ></iframe>
           <div class="map-details">
             <span class="coords">8.3453°N, 80.3961°E</span>
             Mahamewna Gardens, Anuradhapura
           </div>
         </div>
-        <!-- Jetavanaramaya -->
         <div class="map-card reveal">
           <h4>Jetavanaramaya Stupa</h4>
           <iframe
             src="https://www.openstreetmap.org/export/embed.html?bbox=80.3923,8.3451,80.4083,8.3571&layer=mapnik&marker=8.3511,80.4003"
-            width="100%"
             height="300"
             loading="lazy"
             title="Map of Jetavanaramaya Stupa"
-          >
-          </iframe>
+          ></iframe>
           <div class="map-details">
             <span class="coords">8.3511°N, 80.4003°E</span>
             Jetavana Monastery, Anuradhapura
@@ -859,65 +1022,53 @@
 
       <h3 class="map-subsection-title">Polonnaruwa</h3>
       <div class="map-grid grid-2x2">
-        <!-- Gal Vihara -->
         <div class="map-card reveal">
           <h4>Gal Vihara</h4>
           <iframe
             src="https://www.openstreetmap.org/export/embed.html?bbox=80.9940,7.9360,81.0100,7.9480&layer=mapnik&marker=7.9420,81.0020"
-            width="100%"
             height="300"
             loading="lazy"
             title="Map of Gal Vihara"
-          >
-          </iframe>
+          ></iframe>
           <div class="map-details">
             <span class="coords">7.9420°N, 81.0020°E</span>
             Ancient City of Polonnaruwa, North Central Province
           </div>
         </div>
-        <!-- Vatadage -->
         <div class="map-card reveal">
           <h4>Vatadage</h4>
           <iframe
             src="https://www.openstreetmap.org/export/embed.html?bbox=80.9918,7.9337,81.0078,7.9457&layer=mapnik&marker=7.9397,80.9998"
-            width="100%"
             height="300"
             loading="lazy"
             title="Map of Vatadage"
-          >
-          </iframe>
+          ></iframe>
           <div class="map-details">
             <span class="coords">7.9397°N, 80.9998°E</span>
             Quadrangle, Ancient City of Polonnaruwa
           </div>
         </div>
-        <!-- Parakrama Samudra -->
         <div class="map-card reveal">
           <h4>Parakrama Samudra</h4>
           <iframe
             src="https://www.openstreetmap.org/export/embed.html?bbox=80.9813,7.9325,80.9973,7.9445&layer=mapnik&marker=7.9385,80.9893"
-            width="100%"
             height="300"
             loading="lazy"
             title="Map of Parakrama Samudra"
-          >
-          </iframe>
+          ></iframe>
           <div class="map-details">
             <span class="coords">7.9385°N, 80.9893°E</span>
             Polonnaruwa, North Central Province
           </div>
         </div>
-        <!-- Lankatilaka -->
         <div class="map-card reveal">
           <h4>Lankatilaka Image House</h4>
           <iframe
             src="https://www.openstreetmap.org/export/embed.html?bbox=80.9851,7.9258,81.0011,7.9378&layer=mapnik&marker=7.9318,80.9931"
-            width="100%"
             height="300"
             loading="lazy"
             title="Map of Lankatilaka Image House"
-          >
-          </iframe>
+          ></iframe>
           <div class="map-details">
             <span class="coords">7.9318°N, 80.9931°E</span>
             Ancient City of Polonnaruwa
@@ -983,6 +1134,7 @@
     <footer>
       <div class="footer-content">
         <a href="index.html" class="logo">LANKA HERITAGE</a>
+        <!-- BUG FIX #4 — footer-nav now wraps properly -->
         <div class="footer-nav">
           <a href="index.html">Home</a>
           <a href="kandy.html">Kandy →</a>
@@ -995,19 +1147,49 @@
     </footer>
 
     <script>
+      // ── BUG FIX #1: Hamburger menu ──
+      const hamburger = document.querySelector(".hamburger");
+      const mobileNav = document.getElementById("mobileNav");
+
+      function closeMobileNav() {
+        hamburger.classList.remove("open");
+        mobileNav.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      if (hamburger) {
+        hamburger.addEventListener("click", () => {
+          const isOpen = mobileNav.classList.toggle("open");
+          hamburger.classList.toggle("open", isOpen);
+          document.body.style.overflow = isOpen ? "hidden" : "";
+        });
+      }
+
+      // Close drawer when clicking outside
+      mobileNav.addEventListener("click", (e) => {
+        if (e.target === mobileNav) closeMobileNav();
+      });
+
+      // ── BUG FIX #9: Reveal — stable per-element delay ──
       const reveals = document.querySelectorAll(".reveal");
+      reveals.forEach((el, idx) => (el.dataset.revealIndex = idx));
+
       const io = new IntersectionObserver(
         (entries) => {
-          entries.forEach((e, i) => {
+          entries.forEach((e) => {
             if (e.isIntersecting) {
-              setTimeout(() => e.target.classList.add("visible"), i * 90);
+              const delay =
+                (parseInt(e.target.dataset.revealIndex, 10) % 6) * 90;
+              setTimeout(() => e.target.classList.add("visible"), delay);
               io.unobserve(e.target);
             }
           });
         },
         { threshold: 0.08 },
       );
+
       reveals.forEach((r) => io.observe(r));
     </script>
+    <script src="navbar.js"></script>
   </body>
 </html>
