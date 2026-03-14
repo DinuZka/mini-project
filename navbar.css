@@ -6,7 +6,8 @@
   --navbar-active: #d4a843;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -81,7 +82,8 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--navbar-active);
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold);
 }
 
 @media (max-width: 900px) {
